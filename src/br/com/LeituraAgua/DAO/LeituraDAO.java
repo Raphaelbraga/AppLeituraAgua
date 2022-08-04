@@ -66,7 +66,7 @@ private PreparedStatement stmt;
                 obj.setMesReferencia(rs.getDate("mes_referencia"));
                 obj.setLeituraMesAnterior(rs.getInt("leitura_mes_anterior"));
                 obj.setLeituraMesAtual(rs.getInt("leitura_mes_atual"));          
-                obj.setHidrometro(leiDao.listarPorId(rs.getInt("id_hidrometro")));
+                obj.setHidrometro(leiDao.buscaPorId(rs.getInt("id_hidrometro")));
                 obj.setUsuario(leDao.listarPorId(rs.getInt("id_usuario")));
                 return obj;
             }
@@ -92,7 +92,7 @@ private PreparedStatement stmt;
                 obj.setMesReferencia(rs.getDate("mes_referencia"));
                 obj.setLeituraMesAnterior( rs.getDouble("leitura_mes_anterior"));
                 obj.setLeituraMesAtual( rs.getDouble("leitura_mes_atual"));          
-                obj.setHidrometro(leiDao.listarPorId(rs.getInt("id_hidrometro")));
+                obj.setHidrometro(leiDao.buscaPorId(rs.getInt("id_hidrometro")));
                 obj.setUsuario(leDao.listarPorId(rs.getInt("id_usuario")));
                 return obj;
             }
@@ -123,7 +123,7 @@ private PreparedStatement stmt;
                 obj.setMesReferencia(rs.getDate("mes_referencia"));
                 obj.setLeituraMesAnterior(rs.getDouble("leitura_mes_anterior"));
                 obj.setLeituraMesAtual(rs.getDouble("leitura_mes_atual"));          
-                obj.setHidrometro(leiDao.listarPorId(rs.getInt("id_hidrometro")));
+                obj.setHidrometro(leiDao.buscaPorId(rs.getInt("id_hidrometro")));
                 obj.setUsuario(leDao.listarPorId(rs.getInt("id_usuario")));
                 lista.add(obj);
                 

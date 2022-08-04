@@ -5,6 +5,9 @@
  */
 package br.com.model;
 
+import javax.swing.JFormattedTextField;
+import javax.swing.JTextField;
+
 
 /**
  *
@@ -24,8 +27,8 @@ public class Distrito {
 
     public Distrito() {
     }
-
-
+    
+    
     public int getIdDistrito() {
         return idDistrito;
     }
@@ -54,6 +57,7 @@ public class Distrito {
     public String toString() {
         return "Distrito{" + "idDistrito=" + idDistrito + ", nomeDistrito=" + nomeDistrito + ", cidade=" + cidade + '}';
     }
+
     
     
 }

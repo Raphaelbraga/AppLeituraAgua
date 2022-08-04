@@ -6,9 +6,6 @@
 package br.com.LeituraAgua.DAO;
 
 import br.com.model.Despesa;
-import br.com.model.Distrito;
-import br.com.model.Endereco;
-import br.com.model.Poco;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

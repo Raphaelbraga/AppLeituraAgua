@@ -22,20 +22,26 @@ public class EnderecoControler {
     public String mensagem;
 
     
-    public Endereco cadastraNovo(Endereco obj){
-        EnderecoDAO solicita = new EnderecoDAO();
-        Endereco enderecoExist = solicita.listarPorId(obj.getIdEndereco());
+    public Endereco cadastraNovo(Endereco obj) {
+        EnderecoDAO cadastraNovo = new EnderecoDAO();
+        Endereco endereco = cadastraNovo.buscaPorRuaNumero(obj.getRua(),obj.getNumero());
 
-        if (enderecoExist != null) {
-            setMensagem("Erro - Endereco ja existe!");
+        if (endereco != null) {
+            if (endereco.getRua().equals(obj.getRua())) {
+                if (endereco.getNumero() == (obj.getNumero())) {
+                }
+                setMensagem("Erro - Endereco ja existe!");
+                return endereco;
+            }
         } else {
-            Endereco novoEndereco = solicita.cadastrar(obj);
+            Endereco novoEndereco = cadastraNovo.cadastrar(obj);
             return novoEndereco;
         }
-        return null;
+        return endereco;
     }
     
-    public List<Endereco> consultarLista(Endereco obj) {
+    
+    public List<Endereco> consultarLista() {
         EnderecoDAO consulta = new EnderecoDAO();
         List<Endereco> enderecoLista = consulta.listar();
 
@@ -46,11 +52,34 @@ public class EnderecoControler {
         }
         return null;
     }
+    
+    public List<Endereco> listaPorRua(String ruaNumero) {
+        EnderecoDAO consulta = new EnderecoDAO();
+        List<Endereco> enderecoLista = consulta.listaPorRua(ruaNumero);
 
+        if (enderecoLista == null) {
+            setMensagem("Erro - lista de Endereco não existe");
+        } else {
+            return enderecoLista;
+        }
+        return null;
+    }
+    
+    public Endereco consultarPorId (int id){
+       EnderecoDAO consultar = new EnderecoDAO();
+        Endereco novoEndereco = consultar.buscaPorId(id);
+
+        if (novoEndereco == null) {
+            setMensagem("Erro - Usuário não existe!");
+        } else {
+            return novoEndereco;
+        }
+        return null;
+    }
 
     public Endereco atualizar(Endereco obj) {
         EnderecoDAO atualiza = new EnderecoDAO();
-        Endereco idEndereco = atualiza.listarPorId(obj.getIdEndereco());
+        Endereco idEndereco = atualiza.buscaPorId(obj.getIdEndereco());
         
         if (idEndereco != null) {
             setMensagem("Erro - Endereco não existe!");
@@ -63,7 +92,7 @@ public class EnderecoControler {
     
     public Endereco deletar(Endereco obj) {
        EnderecoDAO deleta = new EnderecoDAO();
-        Endereco idEndereco = deleta.listarPorId(obj.getIdEndereco());
+        Endereco idEndereco = deleta.buscaPorId(obj.getIdEndereco());
 
         if (idEndereco != null) {
             setMensagem("Erro -Endereco não existe!");

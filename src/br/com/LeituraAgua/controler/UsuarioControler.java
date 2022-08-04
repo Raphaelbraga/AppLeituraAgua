@@ -15,11 +15,36 @@ import java.util.List;
  * @author Usuario
  */
 public class UsuarioControler {
-
-    PreparedStatement pst = null;
+   PreparedStatement pst = null;
     ResultSet result = null;
     public String mensagem;
 
+    public Usuario cadastrarNovo(Usuario obj) {
+        UsuarioDAO solicita = new UsuarioDAO();
+        Usuario usuarioexist = solicita.listarPorUsuario(obj.getLogin());
+
+        if (usuarioexist != null) {
+            setMensagem("Erro - Usuário ja existe!");
+        } else {
+            Usuario usuario = solicita.cadastrar(obj);
+            setMensagem("sucess - Usuário cadastrado com sucesso");
+            return usuario;
+        }
+        return null;
+    }
+    
+    public Usuario pesquisaPorId(int id) {
+        UsuarioDAO consulta = new UsuarioDAO();
+        Usuario usuarioId = consulta.listarPorId(id);
+
+        if (usuarioId == null) {
+            setMensagem("Erro - Usuário não existe!");
+        } else {
+            return usuarioId;
+        }
+            return null;
+    }
+    
     public Usuario logarUsuario(String login, int senha) {
         UsuarioDAO dao = new UsuarioDAO();
 
@@ -40,20 +65,7 @@ public class UsuarioControler {
         return usuario;
     }
 
-    public Usuario cadastrarNovo(Usuario obj) {
-        UsuarioDAO solicita = new UsuarioDAO();
-        Usuario usuarioexist = solicita.listarPorUsuario(obj.getLogin());
-
-        if (usuarioexist != null) {
-            setMensagem("Erro - Usuário ja existe!");
-        } else {
-            Usuario usuario = solicita.cadastrar(obj);
-            return usuario;
-        }
-        return null;
-    }
-
-    public List<Usuario> consultarLista(Usuario obj) {
+    public List<Usuario> consultarLista() {
         UsuarioDAO consulta = new UsuarioDAO();
         List<Usuario> usuarioLista = consulta.listar();
 
@@ -64,28 +76,56 @@ public class UsuarioControler {
         }
         return null;
     }
-
-    public Usuario pesquisarPorNome(Usuario obj) {
+    
+    public List<Usuario> consultarListaPorTermo(String termo) {
         UsuarioDAO consulta = new UsuarioDAO();
-        Usuario usuarioNome = consulta.listarPorUsuario(obj.getLogin());
+        List<Usuario> usuarioLista = consulta.listarPorTermo(termo);
 
-        if (usuarioNome == null) {
-            setMensagem("Erro - Usuário não existe!");
+        if (usuarioLista == null) {
+            setMensagem("Erro - lista de usuario não existe");
         } else {
-            return obj;
+            return usuarioLista;
         }
         return null;
     }
 
-    public Usuario atualizar(Usuario obj) {
-        UsuarioDAO atualiza = new UsuarioDAO();
-        Usuario nomeUsuario = atualiza.listarPorUsuario(obj.getLogin());
+    public Usuario pesquisarPorNome(String login) {
+        UsuarioDAO consulta = new UsuarioDAO();
+        Usuario usuarioNome = consulta.listarPorUsuario(login);
 
-        if (nomeUsuario != null) {
+        if (usuarioNome == null) {
             setMensagem("Erro - Usuário não existe!");
         } else {
-            Usuario usuario = atualiza.atualizar(obj);
-            return usuario;
+            return usuarioNome;
+        }
+        return null;
+    }
+    
+    
+
+    public Usuario atualizar(Usuario obj) {
+        UsuarioDAO atualiza = new UsuarioDAO();
+        Usuario nomeUsuario = atualiza.listarPorId(obj.getIdUsuario());
+
+        if (nomeUsuario == null) {
+            setMensagem("Erro - Usuário não existe!");
+        } else {
+            atualiza.atualizar(obj);
+            return nomeUsuario;
+        }
+        return null;
+    }
+    
+    public Usuario atualizarPorId (Usuario obj) {
+        UsuarioDAO atualiza = new UsuarioDAO();
+        Usuario usuario = atualiza.listarPorId(obj.getIdUsuario());
+        
+        if (usuario != null) {
+            setMensagem("Erro - Usuário não existe!");
+        } else {
+           atualiza.atualizar(usuario);
+          return usuario;
+             
         }
         return null;
     }
@@ -102,9 +142,10 @@ public class UsuarioControler {
             if(!usuDeletado){
                 setMensagem("falha ao deletar usuario, contate suporte");
             }
-
+            
+            return usuDeletado;
         }
-        return null;
+        return false;
     }
 
     public String getMensagem() {
@@ -114,5 +155,6 @@ public class UsuarioControler {
     public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
     }
+   
      
 }

@@ -5,6 +5,20 @@
  */
 package br.com.LeituraAgua.Telas;
 
+import br.com.LeituraAgua.controler.ConsumidorControler;
+import br.com.LeituraAgua.controler.EnderecoControler;
+import br.com.LeituraAgua.controler.HidrometroControler;
+import br.com.LeituraAgua.controler.UsuarioControler;
+import br.com.model.Consumidor;
+import br.com.model.Endereco;
+import br.com.model.Hidrometro;
+import br.com.model.Usuario;
+import java.awt.event.KeyEvent;
+import java.util.List;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Alunos
@@ -14,10 +28,29 @@ public class NewJInternalFrame extends javax.swing.JInternalFrame {
     /**
      * Creates new form NewJInternalFrame
      */
+    UsuarioControler usuController = new UsuarioControler();
+    Usuario usuarioAtual = new Usuario();
+    
+    HidrometroControler controller = new HidrometroControler();
+    Hidrometro hidroAtual = new Hidrometro();
+    
+    ConsumidorControler consuControl = new ConsumidorControler();
+    Consumidor consumidorAtual = new Consumidor();
+    
+    EnderecoControler enderecoControl = new EnderecoControler();
+    Endereco enderecoAtual = new Endereco();
+    
+    
+    
     public NewJInternalFrame() {
+        controller = new HidrometroControler();
+        usuController = new UsuarioControler();
+        consuControl = new ConsumidorControler();
+        enderecoControl = new EnderecoControler();
         initComponents();
         this.setDesktopIcon(new JDesktopIcon(this));
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,132 +63,142 @@ public class NewJInternalFrame extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jTabbedCliente = new javax.swing.JTabbedPane();
+        Hidrometro = new javax.swing.JTabbedPane();
+        cadastro = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        tfEndereçoHidrometro = new javax.swing.JFormattedTextField();
+        tagHidrometro = new javax.swing.JFormattedTextField();
+        tfCidadeHidrometro = new javax.swing.JFormattedTextField();
+        LeituraInicialHidr = new javax.swing.JFormattedTextField();
+        DistritoHidrometro = new javax.swing.JFormattedTextField();
+        IDHidroCadastro = new javax.swing.JFormattedTextField();
+        btnSalvarHidro = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
+        btnDeleteHidro = new javax.swing.JButton();
+        situacaoHidro = new javax.swing.JComboBox<>();
+        tfconsumidorHidro = new javax.swing.JFormattedTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        tfIdEndereco = new javax.swing.JTextField();
+        tfIdConsumidor = new javax.swing.JTextField();
+        jtpBuscas = new javax.swing.JTabbedPane();
+        jpConsumidor = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbConsumidoHidro = new javax.swing.JTable();
+        btnBuscarConsumidor = new javax.swing.JButton();
+        tfBuscaConsumidor = new javax.swing.JTextField();
+        jpEndereco = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbEnderecoHidro = new javax.swing.JTable();
+        btnPesquisaEndereco = new javax.swing.JButton();
+        tfBuscaEndereco = new javax.swing.JTextField();
+        consulta = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        lbBuscaHidro = new javax.swing.JLabel();
+        tfBuscaHidro = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbHidrometro = new javax.swing.JTable();
+        btnBuscaTodos = new javax.swing.JButton();
         Cliente = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jTextField9 = new javax.swing.JTextField();
+        EditarCliente = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        SalvarCliente = new javax.swing.JButton();
+        IDCliente = new javax.swing.JFormattedTextField();
+        NomeCliente = new javax.swing.JFormattedTextField();
+        CPFCliente = new javax.swing.JFormattedTextField();
+        ContatoCliente = new javax.swing.JFormattedTextField();
+        IDHidrometro = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
-        Hidrometro = new javax.swing.JTabbedPane();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jTextField11 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jTextField12 = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
         Poco = new javax.swing.JTabbedPane();
         jPanel32 = new javax.swing.JPanel();
         jPanel33 = new javax.swing.JPanel();
         jLabel93 = new javax.swing.JLabel();
-        jTextField62 = new javax.swing.JTextField();
-        jLabel94 = new javax.swing.JLabel();
-        jTextField63 = new javax.swing.JTextField();
-        jLabel95 = new javax.swing.JLabel();
-        jTextField64 = new javax.swing.JTextField();
-        jLabel96 = new javax.swing.JLabel();
-        jFormattedTextField31 = new javax.swing.JFormattedTextField();
         jLabel97 = new javax.swing.JLabel();
-        jFormattedTextField32 = new javax.swing.JFormattedTextField();
-        jLabel98 = new javax.swing.JLabel();
-        jFormattedTextField33 = new javax.swing.JFormattedTextField();
-        jLabel99 = new javax.swing.JLabel();
-        jTextField65 = new javax.swing.JTextField();
-        jLabel100 = new javax.swing.JLabel();
-        jTextField66 = new javax.swing.JTextField();
-        jLabel101 = new javax.swing.JLabel();
-        jTextField67 = new javax.swing.JTextField();
+        SalvarPoço = new javax.swing.JButton();
+        EditarPoço = new javax.swing.JButton();
+        IDPoço = new javax.swing.JFormattedTextField();
+        UnidadeConsumidora = new javax.swing.JFormattedTextField();
         jPanel34 = new javax.swing.JPanel();
         Gastos = new javax.swing.JTabbedPane();
         jPanel29 = new javax.swing.JPanel();
-        jPanel30 = new javax.swing.JPanel();
-        jLabel84 = new javax.swing.JLabel();
-        jTextField56 = new javax.swing.JTextField();
-        jLabel85 = new javax.swing.JLabel();
-        jTextField57 = new javax.swing.JTextField();
-        jLabel86 = new javax.swing.JLabel();
-        jTextField58 = new javax.swing.JTextField();
-        jLabel87 = new javax.swing.JLabel();
-        jFormattedTextField28 = new javax.swing.JFormattedTextField();
-        jLabel88 = new javax.swing.JLabel();
-        jFormattedTextField29 = new javax.swing.JFormattedTextField();
-        jLabel89 = new javax.swing.JLabel();
-        jFormattedTextField30 = new javax.swing.JFormattedTextField();
-        jLabel90 = new javax.swing.JLabel();
-        jTextField59 = new javax.swing.JTextField();
-        jLabel91 = new javax.swing.JLabel();
-        jTextField60 = new javax.swing.JTextField();
-        jLabel92 = new javax.swing.JLabel();
-        jTextField61 = new javax.swing.JTextField();
-        jPanel31 = new javax.swing.JPanel();
-        Leiturista = new javax.swing.JTabbedPane();
-        jPanel35 = new javax.swing.JPanel();
-        jPanel36 = new javax.swing.JPanel();
-        jLabel102 = new javax.swing.JLabel();
-        jTextField68 = new javax.swing.JTextField();
-        jLabel103 = new javax.swing.JLabel();
-        jTextField69 = new javax.swing.JTextField();
-        jLabel104 = new javax.swing.JLabel();
-        jTextField70 = new javax.swing.JTextField();
-        jLabel105 = new javax.swing.JLabel();
-        jFormattedTextField34 = new javax.swing.JFormattedTextField();
-        jLabel106 = new javax.swing.JLabel();
-        jFormattedTextField35 = new javax.swing.JFormattedTextField();
+        jLabel95 = new javax.swing.JLabel();
+        jLabel98 = new javax.swing.JLabel();
+        jLabel99 = new javax.swing.JLabel();
+        jLabel100 = new javax.swing.JLabel();
+        jLabel101 = new javax.swing.JLabel();
         jLabel107 = new javax.swing.JLabel();
-        jFormattedTextField36 = new javax.swing.JFormattedTextField();
         jLabel108 = new javax.swing.JLabel();
-        jTextField71 = new javax.swing.JTextField();
         jLabel109 = new javax.swing.JLabel();
-        jTextField72 = new javax.swing.JTextField();
         jLabel110 = new javax.swing.JLabel();
-        jTextField73 = new javax.swing.JTextField();
-        jPanel37 = new javax.swing.JPanel();
+        jLabel120 = new javax.swing.JLabel();
+        jLabel121 = new javax.swing.JLabel();
+        jLabel122 = new javax.swing.JLabel();
+        jLabel123 = new javax.swing.JLabel();
+        SalvarGastos = new javax.swing.JButton();
+        EditarGastos = new javax.swing.JButton();
+        Poço1 = new javax.swing.JFormattedTextField();
+        Poço3 = new javax.swing.JFormattedTextField();
+        Poço2 = new javax.swing.JFormattedTextField();
+        UndCons1 = new javax.swing.JFormattedTextField();
+        UnidCons2 = new javax.swing.JFormattedTextField();
+        Mespoço1 = new javax.swing.JFormattedTextField();
+        UnidCons3 = new javax.swing.JFormattedTextField();
+        Mespoço2 = new javax.swing.JFormattedTextField();
+        Mespoço3 = new javax.swing.JFormattedTextField();
+        ValorEnergia1 = new javax.swing.JFormattedTextField();
+        ValorEnergia2 = new javax.swing.JFormattedTextField();
+        ValorEnergia3 = new javax.swing.JFormattedTextField();
+        ValorEnergiaTotal = new javax.swing.JFormattedTextField();
+        jPanel31 = new javax.swing.JPanel();
         Leitura = new javax.swing.JTabbedPane();
         jPanel38 = new javax.swing.JPanel();
         jPanel39 = new javax.swing.JPanel();
         jLabel111 = new javax.swing.JLabel();
-        jTextField74 = new javax.swing.JTextField();
         jLabel112 = new javax.swing.JLabel();
-        jTextField75 = new javax.swing.JTextField();
+        IDHidrometroLeitura = new javax.swing.JFormattedTextField();
         jLabel113 = new javax.swing.JLabel();
-        jTextField76 = new javax.swing.JTextField();
+        LeituraAnterior = new javax.swing.JFormattedTextField();
+        LeituraAtual = new javax.swing.JFormattedTextField();
         jLabel114 = new javax.swing.JLabel();
-        jFormattedTextField37 = new javax.swing.JFormattedTextField();
-        jLabel115 = new javax.swing.JLabel();
-        jFormattedTextField38 = new javax.swing.JFormattedTextField();
-        jLabel116 = new javax.swing.JLabel();
-        jFormattedTextField39 = new javax.swing.JFormattedTextField();
-        jLabel117 = new javax.swing.JLabel();
-        jTextField77 = new javax.swing.JTextField();
-        jLabel118 = new javax.swing.JLabel();
-        jTextField78 = new javax.swing.JTextField();
-        jLabel119 = new javax.swing.JLabel();
-        jTextField79 = new javax.swing.JTextField();
+        ConsumoLeitura = new javax.swing.JFormattedTextField();
+        SalvarLeitura = new javax.swing.JButton();
+        EditarLeitura = new javax.swing.JButton();
         jPanel40 = new javax.swing.JPanel();
+        usuarios = new javax.swing.JTabbedPane();
+        panelCadastroUsuario = new javax.swing.JPanel();
+        jPanel41 = new javax.swing.JPanel();
+        jLabel106 = new javax.swing.JLabel();
+        jLabel115 = new javax.swing.JLabel();
+        btnGravar = new javax.swing.JButton();
+        tfIdUsuario = new javax.swing.JFormattedTextField();
+        jLabel116 = new javax.swing.JLabel();
+        jLabel117 = new javax.swing.JLabel();
+        cbTipoUsuario = new javax.swing.JComboBox<>();
+        jpUsuario = new javax.swing.JPasswordField();
+        btnRemoverUsuario = new javax.swing.JButton();
+        tfNomeUsuario = new javax.swing.JTextField();
+        btnNovo1 = new javax.swing.JButton();
+        panelBuscaUsuario = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        lbBuscaUsuario = new javax.swing.JLabel();
+        tfBuscaUsuario = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tbUsuarios = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDesktopIcon(null);
         setEnabled(false);
@@ -168,6 +211,433 @@ public class NewJInternalFrame extends javax.swing.JInternalFrame {
 
         jTabbedCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
+        cadastro.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel5.setText("TAG hidrometro");
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 120, 30));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel6.setText("Endereco:");
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 80, 30));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel9.setText("Cidade:");
+        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 80, 30));
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel10.setText("Situação:");
+        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 80, 50));
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel14.setText("ID consumidor");
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 120, 30));
+
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel16.setText("Distrito:");
+        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 110, 60, 30));
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setText("ID Hidro ");
+        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 80, 30));
+        jPanel5.add(tfEndereçoHidrometro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 540, 30));
+
+        tagHidrometro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tagHidrometroActionPerformed(evt);
+            }
+        });
+        tagHidrometro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tagHidrometroKeyPressed(evt);
+            }
+        });
+        jPanel5.add(tagHidrometro, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 100, 30));
+
+        tfCidadeHidrometro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfCidadeHidrometroActionPerformed(evt);
+            }
+        });
+        jPanel5.add(tfCidadeHidrometro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 540, 30));
+
+        LeituraInicialHidr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LeituraInicialHidrActionPerformed(evt);
+            }
+        });
+        jPanel5.add(LeituraInicialHidr, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 20, 110, 30));
+
+        DistritoHidrometro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DistritoHidrometroActionPerformed(evt);
+            }
+        });
+        jPanel5.add(DistritoHidrometro, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 110, 180, 30));
+
+        IDHidroCadastro.setEditable(false);
+        IDHidroCadastro.setBackground(new java.awt.Color(153, 153, 153));
+        IDHidroCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDHidroCadastroActionPerformed(evt);
+            }
+        });
+        jPanel5.add(IDHidroCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 50, 30));
+
+        btnSalvarHidro.setBackground(new java.awt.Color(0, 204, 153));
+        btnSalvarHidro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnSalvarHidro.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvarHidro.setText("Salvar");
+        btnSalvarHidro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarHidroActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnSalvarHidro, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, 130, 40));
+
+        btnNovo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 130, 40));
+
+        btnDeleteHidro.setBackground(new java.awt.Color(255, 102, 102));
+        btnDeleteHidro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnDeleteHidro.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeleteHidro.setText("Deletar");
+        btnDeleteHidro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteHidroMouseClicked(evt);
+            }
+        });
+        btnDeleteHidro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteHidroActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnDeleteHidro, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 450, 160, 40));
+
+        situacaoHidro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inativo", "Ativo", "" }));
+        situacaoHidro.setSelectedIndex(2);
+        situacaoHidro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        situacaoHidro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                situacaoHidroActionPerformed(evt);
+            }
+        });
+        jPanel5.add(situacaoHidro, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 150, 30));
+
+        tfconsumidorHidro.setToolTipText("");
+        tfconsumidorHidro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfconsumidorHidroActionPerformed(evt);
+            }
+        });
+        jPanel5.add(tfconsumidorHidro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 540, 30));
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel11.setText("consumidor");
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 90, 30));
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel15.setText("Leitura Inicial:");
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 100, 30));
+
+        jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel17.setText("ID endereco");
+        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 150, 90, 30));
+
+        tfIdEndereco.setEditable(false);
+        tfIdEndereco.setBackground(new java.awt.Color(153, 153, 153));
+        tfIdEndereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdEnderecoActionPerformed(evt);
+            }
+        });
+        jPanel5.add(tfIdEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 150, 70, 30));
+
+        tfIdConsumidor.setEditable(false);
+        tfIdConsumidor.setBackground(new java.awt.Color(153, 153, 153));
+        tfIdConsumidor.setDoubleBuffered(true);
+        jPanel5.add(tfIdConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 70, 70, 30));
+
+        tbConsumidoHidro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID ", "NOME", "CPF", "CONTATO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbConsumidoHidro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbConsumidoHidroMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tbConsumidoHidro);
+
+        btnBuscarConsumidor.setBackground(new java.awt.Color(0, 153, 255));
+        btnBuscarConsumidor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBuscarConsumidor.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarConsumidor.setText("Encontrar consumidor");
+        btnBuscarConsumidor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarConsumidorActionPerformed(evt);
+            }
+        });
+
+        tfBuscaConsumidor.setToolTipText("Digite o nome do consumidor");
+        tfBuscaConsumidor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfBuscaConsumidorActionPerformed(evt);
+            }
+        });
+        tfBuscaConsumidor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfBuscaConsumidorKeyTyped(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpConsumidorLayout = new javax.swing.GroupLayout(jpConsumidor);
+        jpConsumidor.setLayout(jpConsumidorLayout);
+        jpConsumidorLayout.setHorizontalGroup(
+            jpConsumidorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsumidorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jpConsumidorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpConsumidorLayout.createSequentialGroup()
+                        .addComponent(btnBuscarConsumidor, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tfBuscaConsumidor, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(42, 42, 42))
+        );
+        jpConsumidorLayout.setVerticalGroup(
+            jpConsumidorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpConsumidorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpConsumidorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuscarConsumidor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfBuscaConsumidor))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+        );
+
+        jtpBuscas.addTab("Encontrar consumidor", jpConsumidor);
+
+        tbEnderecoHidro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "RUA", "NUMERO", "DISTRITO", "CIDADE"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbEnderecoHidro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbEnderecoHidroMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tbEnderecoHidro);
+
+        btnPesquisaEndereco.setBackground(new java.awt.Color(0, 153, 255));
+        btnPesquisaEndereco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnPesquisaEndereco.setForeground(new java.awt.Color(255, 255, 255));
+        btnPesquisaEndereco.setText("Encontrar Endereco");
+        btnPesquisaEndereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisaEnderecoActionPerformed(evt);
+            }
+        });
+
+        tfBuscaEndereco.setToolTipText("Digite a rua ");
+        tfBuscaEndereco.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        tfBuscaEndereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfBuscaEnderecoActionPerformed(evt);
+            }
+        });
+        tfBuscaEndereco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfBuscaEnderecoKeyTyped(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpEnderecoLayout = new javax.swing.GroupLayout(jpEndereco);
+        jpEndereco.setLayout(jpEnderecoLayout);
+        jpEnderecoLayout.setHorizontalGroup(
+            jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpEnderecoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpEnderecoLayout.createSequentialGroup()
+                        .addComponent(btnPesquisaEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tfBuscaEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(42, 42, 42))
+        );
+        jpEnderecoLayout.setVerticalGroup(
+            jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpEnderecoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jpEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnPesquisaEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(tfBuscaEndereco))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+        );
+
+        jtpBuscas.addTab("Encontrar Endereço", jpEndereco);
+
+        jPanel5.add(jtpBuscas, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 900, -1));
+
+        javax.swing.GroupLayout cadastroLayout = new javax.swing.GroupLayout(cadastro);
+        cadastro.setLayout(cadastroLayout);
+        cadastroLayout.setHorizontalGroup(
+            cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        cadastroLayout.setVerticalGroup(
+            cadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        Hidrometro.addTab("Cadastro", cadastro);
+
+        lbBuscaHidro.setText("Infome termo para busca do hidrometro:");
+
+        tfBuscaHidro.setToolTipText("informe Tag para pesquisa");
+        tfBuscaHidro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfBuscaHidroActionPerformed(evt);
+            }
+        });
+        tfBuscaHidro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfBuscaHidroKeyTyped(evt);
+            }
+        });
+
+        tbHidrometro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "TAG", "Leitura_inicial", "Situação", "Consumidor", "Endereço"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbHidrometro.setColumnSelectionAllowed(true);
+        tbHidrometro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbHidrometroMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbHidrometro);
+        tbHidrometro.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+
+        btnBuscaTodos.setText("Todos");
+        btnBuscaTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaTodosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(tfBuscaHidro, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscaTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbBuscaHidro, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lbBuscaHidro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfBuscaHidro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscaTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+        );
+
+        javax.swing.GroupLayout consultaLayout = new javax.swing.GroupLayout(consulta);
+        consulta.setLayout(consultaLayout);
+        consultaLayout.setHorizontalGroup(
+            consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1062, Short.MAX_VALUE)
+            .addGroup(consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(consultaLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        consultaLayout.setVerticalGroup(
+            consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(consultaLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        Hidrometro.addTab("Consulta de Hidrômetros", consulta);
+
+        jTabbedCliente.addTab("Hidrômetro", Hidrometro);
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -178,110 +648,64 @@ public class NewJInternalFrame extends javax.swing.JInternalFrame {
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Código:");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-
-        jTextField2.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 14, 70, 30));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Nome:");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 30));
-
-        jTextField3.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 385, 30));
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setText("E-mail:");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 30));
-
-        jTextField6.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 383, 30));
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 30));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setText("Contato:");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(509, 40, 60, 50));
-
-        jFormattedTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" (##) ##### - ####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, 110, 30));
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 60, 50));
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel12.setText("CPF:");
-        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, -1, 50));
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, -1, 30));
 
-        jTextField8.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        EditarCliente.setText("Editar");
+        EditarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                EditarClienteActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 110, 30));
-
-        jButton1.setText("Editar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 130, -1));
-
-        jTextField9.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 110, 30));
+        jPanel4.add(EditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 130, -1));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setText("Cód. Hidr:");
-        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, 70));
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, 30));
 
-        jButton2.setText("Salvar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        SalvarCliente.setText("Salvar");
+        SalvarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                SalvarClienteActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 130, -1));
+        jPanel4.add(SalvarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 130, -1));
+        jPanel4.add(IDCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 320, 30));
+        jPanel4.add(NomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 320, 30));
+        jPanel4.add(CPFCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 130, 30));
+
+        try {
+            ContatoCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" (##) ##### - ####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel4.add(ContatoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 130, 30));
+        jPanel4.add(IDHidrometro, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 130, 30));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 847, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 42, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -302,256 +726,41 @@ public class NewJInternalFrame extends javax.swing.JInternalFrame {
 
         jTabbedCliente.addTab("Cliente", Cliente);
 
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setText("Cód. Hidr:");
-        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 19, 80, 30));
-
-        jTextField4.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 130, 30));
-
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel6.setText("End:");
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 30));
-
-        jTextField5.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 385, 30));
-
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel9.setText("Cidade:");
-        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, 30));
-
-        jTextField7.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 150, 30));
-
-        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel10.setText("Situação:");
-        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 70, 50));
-
-        jFormattedTextField2.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" (##) ##### - ####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField2ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, 110, 30));
-
-        jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel14.setText("Leitura Inicial:");
-        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, 30));
-
-        jTextField10.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 110, 30));
-
-        jButton3.setText("Editar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, 130, -1));
-
-        jTextField11.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 150, 30));
-
-        jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel15.setText("Estado:");
-        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, 30));
-
-        jButton4.setText("Salvar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 130, -1));
-
-        jTextField12.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField12ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 110, 30));
-
-        jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel16.setText("Dist:");
-        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, -1, 30));
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGap(0, 102, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 847, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGap(0, 42, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        Hidrometro.addTab("Cadastro", jPanel8);
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        Hidrometro.addTab("Consulta de Hidrômetros", jPanel10);
-
-        jTabbedCliente.addTab("Hidrômetro", Hidrometro);
-
         jPanel32.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel33.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel33.setPreferredSize(new java.awt.Dimension(847, 400));
 
         jLabel93.setBackground(new java.awt.Color(255, 255, 255));
         jLabel93.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel93.setText("Código:");
-
-        jTextField62.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField62.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField62ActionPerformed(evt);
-            }
-        });
-
-        jLabel94.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel94.setText("Nome:");
-
-        jTextField63.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField63.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField63ActionPerformed(evt);
-            }
-        });
-
-        jLabel95.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel95.setText("E-mail:");
-
-        jTextField64.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField64.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField64ActionPerformed(evt);
-            }
-        });
-
-        jLabel96.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel96.setText("Celular:");
-
-        jFormattedTextField31.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField31.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" (##) ##### - ####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField31.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField31ActionPerformed(evt);
-            }
-        });
+        jLabel93.setText("Cód.Poço:");
 
         jLabel97.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel97.setText("Telefone:");
+        jLabel97.setText("Und. Cons:");
 
-        jFormattedTextField32.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField32.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" (##) ##### - ####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField32.addActionListener(new java.awt.event.ActionListener() {
+        SalvarPoço.setText("Salvar");
+        SalvarPoço.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField32ActionPerformed(evt);
+                SalvarPoçoActionPerformed(evt);
             }
         });
 
-        jLabel98.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel98.setText("CEP:");
-
-        jFormattedTextField33.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField33.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" ##### - ###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField33.addActionListener(new java.awt.event.ActionListener() {
+        EditarPoço.setText("Editar");
+        EditarPoço.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField33ActionPerformed(evt);
+                EditarPoçoActionPerformed(evt);
             }
         });
 
-        jLabel99.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel99.setText("Endereço:");
-
-        jTextField65.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField65.addActionListener(new java.awt.event.ActionListener() {
+        IDPoço.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField65ActionPerformed(evt);
+                IDPoçoActionPerformed(evt);
             }
         });
 
-        jLabel100.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel100.setText("Nº:");
-
-        jTextField66.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField66.addActionListener(new java.awt.event.ActionListener() {
+        UnidadeConsumidora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField66ActionPerformed(evt);
-            }
-        });
-
-        jLabel101.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel101.setText("Nome:");
-
-        jTextField67.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField67.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField67ActionPerformed(evt);
+                UnidadeConsumidoraActionPerformed(evt);
             }
         });
 
@@ -560,95 +769,55 @@ public class NewJInternalFrame extends javax.swing.JInternalFrame {
         jPanel33Layout.setHorizontalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SalvarPoço, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel33Layout.createSequentialGroup()
+                        .addComponent(jLabel93)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(IDPoço, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66)))
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel33Layout.createSequentialGroup()
-                        .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel33Layout.createSequentialGroup()
-                                .addComponent(jLabel94)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField63, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel33Layout.createSequentialGroup()
-                                .addComponent(jLabel93)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField62, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel33Layout.createSequentialGroup()
-                                .addComponent(jLabel95)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField64, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel33Layout.createSequentialGroup()
-                                .addComponent(jLabel101)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField67, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel96)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
+                        .addGap(125, 125, 125)
+                        .addComponent(EditarPoço, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel33Layout.createSequentialGroup()
+                        .addGap(255, 255, 255)
                         .addComponent(jLabel97)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel33Layout.createSequentialGroup()
-                        .addComponent(jLabel98)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel99)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField65, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel100)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField66, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addComponent(UnidadeConsumidora, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel93)
-                    .addComponent(jTextField62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel94)
-                    .addComponent(jTextField63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel95)
-                    .addComponent(jTextField64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel96)
-                    .addComponent(jFormattedTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel97)
-                    .addComponent(jFormattedTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(IDPoço, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UnidadeConsumidora, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel98)
-                    .addComponent(jFormattedTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel99)
-                    .addComponent(jTextField65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField66, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel100))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel101)
-                    .addComponent(jTextField67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(230, Short.MAX_VALUE))
+                    .addComponent(SalvarPoço)
+                    .addComponent(EditarPoço))
+                .addGap(122, 122, 122))
         );
 
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
         jPanel32Layout.setHorizontalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel32Layout.createSequentialGroup()
-                .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel32Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         Poco.addTab("Cadastro", jPanel32);
@@ -670,208 +839,200 @@ public class NewJInternalFrame extends javax.swing.JInternalFrame {
 
         jPanel29.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel30.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel95.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel95.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel95.setText("Cód.Poço:");
 
-        jLabel84.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel84.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel84.setText("Código:");
+        jLabel98.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel98.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel98.setText("Cód.Poço:");
 
-        jTextField56.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField56.addActionListener(new java.awt.event.ActionListener() {
+        jLabel99.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel99.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel99.setText("Cód.Poço:");
+
+        jLabel100.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel100.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel100.setText("Und. Cons:");
+
+        jLabel101.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel101.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel101.setText("Und. Cons:");
+
+        jLabel107.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel107.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel107.setText("Und. Cons:");
+
+        jLabel108.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel108.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel108.setText("Mês:");
+
+        jLabel109.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel109.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel109.setText("Mês:");
+
+        jLabel110.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel110.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel110.setText("Mês:");
+
+        jLabel120.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel120.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel120.setText("Valor Energia:");
+
+        jLabel121.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel121.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel121.setText("Valor Energia:");
+
+        jLabel122.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel122.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel122.setText("Valor Energia:");
+
+        jLabel123.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel123.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel123.setText("Valor Total:");
+
+        SalvarGastos.setText("Salvar");
+        SalvarGastos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField56ActionPerformed(evt);
+                SalvarGastosActionPerformed(evt);
             }
         });
 
-        jLabel85.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel85.setText("Nome:");
-
-        jTextField57.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField57.addActionListener(new java.awt.event.ActionListener() {
+        EditarGastos.setText("Editar");
+        EditarGastos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField57ActionPerformed(evt);
+                EditarGastosActionPerformed(evt);
             }
         });
 
-        jLabel86.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel86.setText("E-mail:");
-
-        jTextField58.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField58.addActionListener(new java.awt.event.ActionListener() {
+        UndCons1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField58ActionPerformed(evt);
+                UndCons1ActionPerformed(evt);
             }
         });
 
-        jLabel87.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel87.setText("Celular:");
-
-        jFormattedTextField28.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField28.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" (##) ##### - ####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField28.addActionListener(new java.awt.event.ActionListener() {
+        UnidCons2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField28ActionPerformed(evt);
+                UnidCons2ActionPerformed(evt);
             }
         });
-
-        jLabel88.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel88.setText("Telefone:");
-
-        jFormattedTextField29.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField29.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" (##) ##### - ####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField29.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField29ActionPerformed(evt);
-            }
-        });
-
-        jLabel89.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel89.setText("CEP:");
-
-        jFormattedTextField30.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField30.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" ##### - ###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField30.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField30ActionPerformed(evt);
-            }
-        });
-
-        jLabel90.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel90.setText("Endereço:");
-
-        jTextField59.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField59.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField59ActionPerformed(evt);
-            }
-        });
-
-        jLabel91.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel91.setText("Nº:");
-
-        jTextField60.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField60.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField60ActionPerformed(evt);
-            }
-        });
-
-        jLabel92.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel92.setText("Nome:");
-
-        jTextField61.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField61.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField61ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
-        jPanel30.setLayout(jPanel30Layout);
-        jPanel30Layout.setHorizontalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel30Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel30Layout.createSequentialGroup()
-                        .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel30Layout.createSequentialGroup()
-                                .addComponent(jLabel85)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField57, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel30Layout.createSequentialGroup()
-                                .addComponent(jLabel84)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField56, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel30Layout.createSequentialGroup()
-                                .addComponent(jLabel86)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField58, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel30Layout.createSequentialGroup()
-                                .addComponent(jLabel92)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField61, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel87)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel88)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel30Layout.createSequentialGroup()
-                        .addComponent(jLabel89)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel90)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField59, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel91)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField60, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-        jPanel30Layout.setVerticalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel30Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel84)
-                    .addComponent(jTextField56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel85)
-                    .addComponent(jTextField57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel86)
-                    .addComponent(jTextField58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel87)
-                    .addComponent(jFormattedTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel88)
-                    .addComponent(jFormattedTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel89)
-                    .addComponent(jFormattedTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel90)
-                    .addComponent(jTextField59, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel91))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel92)
-                    .addComponent(jTextField61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(230, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
-                .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel29Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel29Layout.createSequentialGroup()
+                                .addComponent(jLabel98)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Poço2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel29Layout.createSequentialGroup()
+                                .addComponent(jLabel99)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Poço3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel29Layout.createSequentialGroup()
+                                .addComponent(jLabel95)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Poço1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel29Layout.createSequentialGroup()
+                                        .addComponent(jLabel101)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(UnidCons2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel29Layout.createSequentialGroup()
+                                        .addComponent(jLabel100)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(UndCons1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel29Layout.createSequentialGroup()
+                                        .addComponent(jLabel107)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(UnidCons3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(44, 44, 44)
+                                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel29Layout.createSequentialGroup()
+                                        .addComponent(jLabel108)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Mespoço1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel29Layout.createSequentialGroup()
+                                        .addComponent(jLabel109)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Mespoço2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel29Layout.createSequentialGroup()
+                                        .addComponent(jLabel110)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Mespoço3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel29Layout.createSequentialGroup()
+                                        .addComponent(jLabel121)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(ValorEnergia2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel29Layout.createSequentialGroup()
+                                        .addComponent(jLabel120)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(ValorEnergia1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel29Layout.createSequentialGroup()
+                                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel122)
+                                            .addComponent(jLabel123, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(ValorEnergiaTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                            .addComponent(ValorEnergia3)))))))
+                    .addGroup(jPanel29Layout.createSequentialGroup()
+                        .addGap(254, 254, 254)
+                        .addComponent(SalvarGastos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(125, 125, 125)
+                        .addComponent(EditarGastos, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
-                .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(83, 83, 83)
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel95)
+                    .addComponent(Poço1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UndCons1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel100)
+                    .addComponent(jLabel108)
+                    .addComponent(Mespoço1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel120)
+                    .addComponent(ValorEnergia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel98)
+                    .addComponent(Poço2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel101)
+                    .addComponent(UnidCons2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel109)
+                    .addComponent(Mespoço2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel121)
+                    .addComponent(ValorEnergia2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel99)
+                    .addComponent(jLabel107)
+                    .addComponent(jLabel110)
+                    .addComponent(jLabel122)
+                    .addComponent(Poço3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Mespoço3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ValorEnergia3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UnidCons3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel123)
+                    .addComponent(ValorEnergiaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SalvarGastos)
+                    .addComponent(EditarGastos))
+                .addGap(114, 114, 114))
         );
 
         Gastos.addTab("Cadastro", jPanel29);
@@ -891,336 +1052,40 @@ public class NewJInternalFrame extends javax.swing.JInternalFrame {
 
         jTabbedCliente.addTab("Gastos", Gastos);
 
-        jPanel35.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel36.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel102.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel102.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel102.setText("Código:");
-
-        jTextField68.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField68.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField68ActionPerformed(evt);
-            }
-        });
-
-        jLabel103.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel103.setText("Nome:");
-
-        jTextField69.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField69.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField69ActionPerformed(evt);
-            }
-        });
-
-        jLabel104.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel104.setText("E-mail:");
-
-        jTextField70.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField70.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField70ActionPerformed(evt);
-            }
-        });
-
-        jLabel105.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel105.setText("Celular:");
-
-        jFormattedTextField34.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField34.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" (##) ##### - ####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField34.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField34ActionPerformed(evt);
-            }
-        });
-
-        jLabel106.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel106.setText("Telefone:");
-
-        jFormattedTextField35.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField35.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" (##) ##### - ####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField35.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField35ActionPerformed(evt);
-            }
-        });
-
-        jLabel107.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel107.setText("CEP:");
-
-        jFormattedTextField36.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField36.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" ##### - ###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField36.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField36ActionPerformed(evt);
-            }
-        });
-
-        jLabel108.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel108.setText("Endereço:");
-
-        jTextField71.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField71.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField71ActionPerformed(evt);
-            }
-        });
-
-        jLabel109.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel109.setText("Nº:");
-
-        jTextField72.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField72.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField72ActionPerformed(evt);
-            }
-        });
-
-        jLabel110.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel110.setText("Nome:");
-
-        jTextField73.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField73.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField73ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
-        jPanel36.setLayout(jPanel36Layout);
-        jPanel36Layout.setHorizontalGroup(
-            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel36Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel36Layout.createSequentialGroup()
-                        .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel36Layout.createSequentialGroup()
-                                .addComponent(jLabel103)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField69, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel36Layout.createSequentialGroup()
-                                .addComponent(jLabel102)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField68, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
-                                .addComponent(jLabel104)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField70, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel36Layout.createSequentialGroup()
-                                .addComponent(jLabel110)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField73, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel105)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel106)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel36Layout.createSequentialGroup()
-                        .addComponent(jLabel107)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel108)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField71, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel109)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField72, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-        jPanel36Layout.setVerticalGroup(
-            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel36Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel102)
-                    .addComponent(jTextField68, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel103)
-                    .addComponent(jTextField69, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel104)
-                    .addComponent(jTextField70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel105)
-                    .addComponent(jFormattedTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel106)
-                    .addComponent(jFormattedTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel107)
-                    .addComponent(jFormattedTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel108)
-                    .addComponent(jTextField71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel109))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel110)
-                    .addComponent(jTextField73, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(230, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
-        jPanel35.setLayout(jPanel35Layout);
-        jPanel35Layout.setHorizontalGroup(
-            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel35Layout.createSequentialGroup()
-                .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel35Layout.setVerticalGroup(
-            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel35Layout.createSequentialGroup()
-                .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        Leiturista.addTab("Cadastro", jPanel35);
-
-        javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
-        jPanel37.setLayout(jPanel37Layout);
-        jPanel37Layout.setHorizontalGroup(
-            jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel37Layout.setVerticalGroup(
-            jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        Leiturista.addTab("Consulta de Leiturista", jPanel37);
-
-        jTabbedCliente.addTab("Leiturista", Leiturista);
-
         jPanel38.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel39.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel111.setBackground(new java.awt.Color(255, 255, 255));
         jLabel111.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel111.setText("Código:");
-
-        jTextField74.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField74.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField74ActionPerformed(evt);
-            }
-        });
+        jLabel111.setText("Cód. Hidr:");
 
         jLabel112.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel112.setText("Nome:");
-
-        jTextField75.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField75.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField75ActionPerformed(evt);
-            }
-        });
+        jLabel112.setText("Leitura Anterior:");
 
         jLabel113.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel113.setText("E-mail:");
+        jLabel113.setText("Leitura Atual:");
 
-        jTextField76.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField76.addActionListener(new java.awt.event.ActionListener() {
+        LeituraAtual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField76ActionPerformed(evt);
+                LeituraAtualActionPerformed(evt);
             }
         });
 
         jLabel114.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel114.setText("Celular:");
+        jLabel114.setText("Consumo m³:");
 
-        jFormattedTextField37.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField37.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" (##) ##### - ####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField37.addActionListener(new java.awt.event.ActionListener() {
+        SalvarLeitura.setText("Salvar");
+        SalvarLeitura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField37ActionPerformed(evt);
+                SalvarLeituraActionPerformed(evt);
             }
         });
 
-        jLabel115.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel115.setText("Telefone:");
-
-        jFormattedTextField38.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField38.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" (##) ##### - ####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField38.addActionListener(new java.awt.event.ActionListener() {
+        EditarLeitura.setText("Editar");
+        EditarLeitura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField38ActionPerformed(evt);
-            }
-        });
-
-        jLabel116.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel116.setText("CEP:");
-
-        jFormattedTextField39.setBackground(new java.awt.Color(204, 204, 204));
-        try {
-            jFormattedTextField39.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(" ##### - ###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField39.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField39ActionPerformed(evt);
-            }
-        });
-
-        jLabel117.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel117.setText("Endereço:");
-
-        jTextField77.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField77.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField77ActionPerformed(evt);
-            }
-        });
-
-        jLabel118.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel118.setText("Nº:");
-
-        jTextField78.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField78.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField78ActionPerformed(evt);
-            }
-        });
-
-        jLabel119.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel119.setText("Nome:");
-
-        jTextField79.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField79.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField79ActionPerformed(evt);
+                EditarLeituraActionPerformed(evt);
             }
         });
 
@@ -1229,80 +1094,55 @@ public class NewJInternalFrame extends javax.swing.JInternalFrame {
         jPanel39Layout.setHorizontalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel39Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel39Layout.createSequentialGroup()
-                        .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel39Layout.createSequentialGroup()
-                                .addComponent(jLabel112)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField75, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel39Layout.createSequentialGroup()
-                                .addComponent(jLabel111)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField74, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel39Layout.createSequentialGroup()
-                                .addComponent(jLabel113)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField76, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel39Layout.createSequentialGroup()
-                                .addComponent(jLabel119)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField79, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel114)
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel111)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField37, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel115)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(IDHidrometroLeitura, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel39Layout.createSequentialGroup()
-                        .addComponent(jLabel116)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel117)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField77, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel118)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField78, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGap(240, 240, 240)
+                        .addComponent(SalvarLeitura, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(102, 102, 102)
+                        .addComponent(EditarLeitura, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(345, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel39Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel112, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel113, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel114, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LeituraAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LeituraAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ConsumoLeitura, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(273, 273, 273))
         );
         jPanel39Layout.setVerticalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel39Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel111)
-                    .addComponent(jTextField74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(IDHidrometroLeitura, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel111))
+                .addGap(3, 3, 3)
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel112)
-                    .addComponent(jTextField75, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                    .addComponent(LeituraAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel113)
-                    .addComponent(jTextField76, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LeituraAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel114)
-                    .addComponent(jFormattedTextField37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel115)
-                    .addComponent(jFormattedTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(ConsumoLeitura, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(72, 72, 72)
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel116)
-                    .addComponent(jFormattedTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel117)
-                    .addComponent(jTextField77, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField78, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel118))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel119)
-                    .addComponent(jTextField79, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(230, Short.MAX_VALUE))
+                    .addComponent(EditarLeitura)
+                    .addComponent(SalvarLeitura))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
@@ -1337,6 +1177,219 @@ public class NewJInternalFrame extends javax.swing.JInternalFrame {
 
         jTabbedCliente.addTab("Leitura", Leitura);
 
+        panelCadastroUsuario.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel41.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel41.setPreferredSize(new java.awt.Dimension(847, 400));
+        jPanel41.setLayout(null);
+
+        jLabel106.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel106.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel106.setText("Cód. Usuário:");
+        jPanel41.add(jLabel106);
+        jLabel106.setBounds(70, 60, 100, 30);
+
+        jLabel115.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel115.setText("Login:");
+        jPanel41.add(jLabel115);
+        jLabel115.setBounds(80, 100, 90, 30);
+
+        btnGravar.setBackground(new java.awt.Color(0, 204, 153));
+        btnGravar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnGravar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGravar.setText("Salvar");
+        btnGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGravarActionPerformed(evt);
+            }
+        });
+        jPanel41.add(btnGravar);
+        btnGravar.setBounds(690, 350, 150, 40);
+
+        tfIdUsuario.setEditable(false);
+        tfIdUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        tfIdUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        tfIdUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel41.add(tfIdUsuario);
+        tfIdUsuario.setBounds(180, 60, 110, 30);
+
+        jLabel116.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel116.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel116.setText("Perfil:");
+        jPanel41.add(jLabel116);
+        jLabel116.setBounds(440, 60, 60, 30);
+
+        jLabel117.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel117.setText("Senha:");
+        jPanel41.add(jLabel117);
+        jLabel117.setBounds(80, 140, 90, 30);
+
+        cbTipoUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cbTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Leiturista", "Faturista", "Padrao" }));
+        cbTipoUsuario.setSelectedIndex(3);
+        cbTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTipoUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel41.add(cbTipoUsuario);
+        cbTipoUsuario.setBounds(490, 60, 220, 30);
+
+        jpUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jPanel41.add(jpUsuario);
+        jpUsuario.setBounds(180, 140, 530, 30);
+
+        btnRemoverUsuario.setBackground(new java.awt.Color(255, 102, 102));
+        btnRemoverUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRemoverUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        btnRemoverUsuario.setText("Excluir");
+        btnRemoverUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel41.add(btnRemoverUsuario);
+        btnRemoverUsuario.setBounds(530, 350, 150, 40);
+
+        tfNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNomeUsuarioActionPerformed(evt);
+            }
+        });
+        tfNomeUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfNomeUsuarioKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNomeUsuarioKeyTyped(evt);
+            }
+        });
+        jPanel41.add(tfNomeUsuario);
+        tfNomeUsuario.setBounds(180, 100, 530, 30);
+
+        btnNovo1.setBackground(new java.awt.Color(153, 153, 153));
+        btnNovo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnNovo1.setText("Novo");
+        btnNovo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovo1ActionPerformed(evt);
+            }
+        });
+        jPanel41.add(btnNovo1);
+        btnNovo1.setBounds(10, 350, 150, 40);
+
+        javax.swing.GroupLayout panelCadastroUsuarioLayout = new javax.swing.GroupLayout(panelCadastroUsuario);
+        panelCadastroUsuario.setLayout(panelCadastroUsuarioLayout);
+        panelCadastroUsuarioLayout.setHorizontalGroup(
+            panelCadastroUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastroUsuarioLayout.createSequentialGroup()
+                .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelCadastroUsuarioLayout.setVerticalGroup(
+            panelCadastroUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastroUsuarioLayout.createSequentialGroup()
+                .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        usuarios.addTab("Cadastro", panelCadastroUsuario);
+
+        panelBuscaUsuario.setMinimumSize(new java.awt.Dimension(50, 180));
+        panelBuscaUsuario.setPreferredSize(new java.awt.Dimension(847, 50));
+        panelBuscaUsuario.setLayout(new java.awt.BorderLayout());
+
+        lbBuscaUsuario.setText("Infome termo para busca do usuário:");
+
+        tfBuscaUsuario.setToolTipText("Informe login ou id para busca.");
+        tfBuscaUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfBuscaUsuarioKeyTyped(evt);
+            }
+        });
+
+        tbUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Login", "Perfil"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbUsuarios.setColumnSelectionAllowed(true);
+        tbUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbUsuariosMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tbUsuarios);
+
+        jButton1.setText("Todos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbBuscaUsuario)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(tfBuscaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lbBuscaUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tfBuscaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+        );
+
+        panelBuscaUsuario.add(jPanel7, java.awt.BorderLayout.PAGE_START);
+
+        usuarios.addTab("Consulta", panelBuscaUsuario);
+
+        jTabbedCliente.addTab("Usuário", usuarios);
+
         jPanel1.add(jTabbedCliente);
 
         getContentPane().add(jPanel1);
@@ -1344,255 +1397,582 @@ public class NewJInternalFrame extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void EditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_EditarClienteActionPerformed
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+    private void SalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+        ConsumidorControler controler = new ConsumidorControler();
+        
+        String nome = NomeCliente.getText();
+        String cpf = CPFCliente.getText();
+        String contato = ContatoCliente.getText();
+      
+        Consumidor novoConsumidor = new Consumidor (nome, cpf, contato);
+        controler.cadastraNovo(novoConsumidor);
+        
+        JOptionPane.showMessageDialog(null, controler.getMensagem());
+    }//GEN-LAST:event_SalvarClienteActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void SalvarPoçoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarPoçoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_SalvarPoçoActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void EditarPoçoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarPoçoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_EditarPoçoActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void SalvarGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarGastosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_SalvarGastosActionPerformed
 
-    private void jTextField56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField56ActionPerformed
+    private void EditarGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarGastosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField56ActionPerformed
+    }//GEN-LAST:event_EditarGastosActionPerformed
 
-    private void jTextField57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField57ActionPerformed
+    private void UnidCons2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UnidCons2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField57ActionPerformed
+    }//GEN-LAST:event_UnidCons2ActionPerformed
 
-    private void jTextField58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField58ActionPerformed
+    private void UndCons1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndCons1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField58ActionPerformed
+    }//GEN-LAST:event_UndCons1ActionPerformed
 
-    private void jFormattedTextField28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField28ActionPerformed
+    private void SalvarLeituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarLeituraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField28ActionPerformed
+    }//GEN-LAST:event_SalvarLeituraActionPerformed
 
-    private void jFormattedTextField29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField29ActionPerformed
+    private void EditarLeituraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarLeituraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField29ActionPerformed
+    }//GEN-LAST:event_EditarLeituraActionPerformed
 
-    private void jFormattedTextField30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField30ActionPerformed
+    private void LeituraAtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeituraAtualActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField30ActionPerformed
+    }//GEN-LAST:event_LeituraAtualActionPerformed
 
-    private void jTextField59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField59ActionPerformed
+    private void tagHidrometroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tagHidrometroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField59ActionPerformed
+        
+    }//GEN-LAST:event_tagHidrometroActionPerformed
 
-    private void jTextField60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField60ActionPerformed
+    private void tfCidadeHidrometroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCidadeHidrometroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField60ActionPerformed
+    }//GEN-LAST:event_tfCidadeHidrometroActionPerformed
 
-    private void jTextField61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField61ActionPerformed
+    private void LeituraInicialHidrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeituraInicialHidrActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField61ActionPerformed
+    }//GEN-LAST:event_LeituraInicialHidrActionPerformed
 
-    private void jTextField62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField62ActionPerformed
+    private void DistritoHidrometroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DistritoHidrometroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField62ActionPerformed
+    }//GEN-LAST:event_DistritoHidrometroActionPerformed
 
-    private void jTextField63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField63ActionPerformed
+    private void IDPoçoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDPoçoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField63ActionPerformed
+    }//GEN-LAST:event_IDPoçoActionPerformed
 
-    private void jTextField64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField64ActionPerformed
+    private void UnidadeConsumidoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UnidadeConsumidoraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField64ActionPerformed
+    }//GEN-LAST:event_UnidadeConsumidoraActionPerformed
+    
+    
+    private void btnDeleteHidroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHidroActionPerformed
+        // TODO add your handling code here:
+        int opcao = JOptionPane.showConfirmDialog(jPanel41, "Deseja realmente excluir o hidrometro?", "Exclusão de Hidrometro", JOptionPane.YES_NO_OPTION);
 
-    private void jFormattedTextField31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField31ActionPerformed
+        if (opcao == 0) {
+            Boolean deletado = controller.deletar(hidroAtual);
+            limparTelaHidro();
+            if (deletado) {
+                JOptionPane.showMessageDialog(this, "Hidrometro removido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+               JOptionPane.showMessageDialog(this, "Ocorreu um erro ao remover o Hidrometro!", "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnDeleteHidroActionPerformed
+    
+    private void btnDeleteHidroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteHidroMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField31ActionPerformed
+    }//GEN-LAST:event_btnDeleteHidroMouseClicked
 
-    private void jFormattedTextField32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField32ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField32ActionPerformed
+    private void tfBuscaHidroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscaHidroKeyTyped
+        if (tfBuscaHidro.getText() != null && tfBuscaHidro.getText().length()>0) {
+            tbHidrometro.removeAll();
+                                                                                                
+            List<Hidrometro> hidrometro = controller.consultarListaPorTermo(Integer.parseInt(tfBuscaHidro.getText()));
+            DefaultTableModel model = (DefaultTableModel) tbHidrometro.getModel();
+            model.setNumRows(0);
 
-    private void jFormattedTextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField33ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField33ActionPerformed
+            for (Hidrometro hidro : hidrometro) {
+                model.addRow(new Object[]{
+                    hidro.getTagHidrometro(),
+                    hidro.getLeituraInstalacao(),
+                    hidro.isSituacao(),
+                    hidro.getConsumidor().getNome(),
+                    hidro.getEndereco().getRua()
+                });
+            }
+        }
+    }//GEN-LAST:event_tfBuscaHidroKeyTyped
 
-    private void jTextField65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField65ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField65ActionPerformed
+    private void tbHidrometroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHidrometroMouseClicked
+        int linha = tbHidrometro.getSelectedRow();
+        hidroAtual = controller.pesquisaPorTag(Integer.parseInt(tbHidrometro.getValueAt(linha, 0).toString()));
+        if (hidroAtual != null) {
+            preencherHidrometro();
+            Hidrometro.setSelectedIndex(0);
+            tbHidrometro.removeAll();
+        }
+    }//GEN-LAST:event_tbHidrometroMouseClicked
 
-    private void jTextField66ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField66ActionPerformed
+    private void btnBuscaTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaTodosActionPerformed
+        
+        tbHidrometro.removeAll();
+        List<Hidrometro> hidrometro = controller.consultarLista();
+        DefaultTableModel model = (DefaultTableModel) tbHidrometro.getModel();
+        model.setNumRows(0);
+        
+        for (Hidrometro hidro : hidrometro) {
+            model.addRow(new Object[]{
+                hidro.getTagHidrometro(),
+                hidro.getLeituraInstalacao(),
+                hidro.isSituacao(),
+                hidro.getConsumidor().getNome(),
+                hidro.getEndereco().getRua(),
+            });
+        }
+    }//GEN-LAST:event_btnBuscaTodosActionPerformed
+    
+    
+    private void tfBuscaHidroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfBuscaHidroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField66ActionPerformed
+    }//GEN-LAST:event_tfBuscaHidroActionPerformed
 
-    private void jTextField67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField67ActionPerformed
+    private void IDHidroCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDHidroCadastroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField67ActionPerformed
+    }//GEN-LAST:event_IDHidroCadastroActionPerformed
 
-    private void jTextField68ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField68ActionPerformed
+    private void situacaoHidroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_situacaoHidroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField68ActionPerformed
+    }//GEN-LAST:event_situacaoHidroActionPerformed
 
-    private void jTextField69ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField69ActionPerformed
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField69ActionPerformed
+            limparTelaHidro();     
+            
+            DefaultTableModel model = (DefaultTableModel) tbHidrometro.getModel();
+        model.setNumRows(0);
+        
+        DefaultTableModel modelConsu = (DefaultTableModel) tbConsumidoHidro.getModel();
+        modelConsu.setNumRows(0);
+        tbConsumidoHidro.removeAll();
+        
+        DefaultTableModel modelEnder = (DefaultTableModel) tbEnderecoHidro.getModel();
+        modelEnder.setNumRows(0);
+        tbEnderecoHidro.removeAll();
+    }//GEN-LAST:event_btnNovoActionPerformed
 
-    private void jTextField70ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField70ActionPerformed
+    private void tfconsumidorHidroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfconsumidorHidroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField70ActionPerformed
+    }//GEN-LAST:event_tfconsumidorHidroActionPerformed
 
-    private void jFormattedTextField34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField34ActionPerformed
+    private void tagHidrometroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tagHidrometroKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField34ActionPerformed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            hidroAtual = controller.pesquisaPorTag(Integer.parseInt(tagHidrometro.getText()));
+            preencherHidrometro();   
+        }
+    }//GEN-LAST:event_tagHidrometroKeyPressed
 
-    private void jFormattedTextField35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField35ActionPerformed
+    private void btnSalvarHidroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarHidroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField35ActionPerformed
+        Hidrometro novoHidro = new Hidrometro();
 
-    private void jFormattedTextField36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField36ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField36ActionPerformed
+        novoHidro.setTagHidrometro(Integer.parseInt(tagHidrometro.getText()));
+        novoHidro.setLeituraInstalacao(Double.valueOf(LeituraInicialHidr.getText()));
+        int situ = situacaoHidro.getSelectedIndex();
+        if (situ == 1) {
+            novoHidro.setSituacao(true);
+        } else {
+            if (situ < 1) {
+                novoHidro.setSituacao(false);
+            }
+        }
+        novoHidro.setIdEndereco(Integer.parseInt(tfIdEndereco.getText()));
+        novoHidro.setIdConsumidor(Integer.parseInt(tfIdConsumidor.getText()));
 
-    private void jTextField71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField71ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField71ActionPerformed
+        if ((hidroAtual != null) && (hidroAtual.getIdHidrometro() > 0)) {
+            novoHidro.setIdHidrometro(hidroAtual.getIdHidrometro());
+            Boolean sucesso = controller.atualizar(novoHidro);
+            if (sucesso) {
+                JOptionPane.showMessageDialog(this, "Hdrometro alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                hidroAtual = novoHidro;
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao atualizar hidrometro!", "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            Hidrometro idConpara = controller.pesquisaPorTag(novoHidro.getTagHidrometro());
+            if (idConpara != null) {
+                JOptionPane.showMessageDialog(this, "tag ja cadastrada!", "ERRO", JOptionPane.ERROR_MESSAGE);
+            } else {
+                controller.cadastraNovo(novoHidro);
+                JOptionPane.showMessageDialog(this, "Hidrometro salvo com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnSalvarHidroActionPerformed
 
-    private void jTextField72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField72ActionPerformed
+    private void tfIdEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdEnderecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField72ActionPerformed
+    }//GEN-LAST:event_tfIdEnderecoActionPerformed
 
-    private void jTextField73ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField73ActionPerformed
+    private void tfBuscaEnderecoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscaEnderecoKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField73ActionPerformed
+        if (tfBuscaEndereco.getText() != null && tfBuscaEndereco.getText().length() >2) {
+            tbEnderecoHidro.removeAll();
 
-    private void jTextField74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField74ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField74ActionPerformed
+            List<Endereco> endereco = enderecoControl.listaPorRua(String.valueOf(tfBuscaEndereco.getText()));
+            DefaultTableModel model = (DefaultTableModel) tbEnderecoHidro.getModel();
+            model.setNumRows(0);
 
-    private void jTextField75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField75ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField75ActionPerformed
+            for (Endereco ender : endereco) {
+                model.addRow(new Object[]{
+                    ender.getIdEndereco(),
+                    ender.getRua(),
+                    ender.getNumero(),
+                    ender.getDistrito(),
+                    ender.getCidade()
+                });
+            }
+        }
+    }//GEN-LAST:event_tfBuscaEnderecoKeyTyped
 
-    private void jTextField76ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField76ActionPerformed
+    private void tfBuscaEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfBuscaEnderecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField76ActionPerformed
+    }//GEN-LAST:event_tfBuscaEnderecoActionPerformed
 
-    private void jFormattedTextField37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField37ActionPerformed
+    private void tfBuscaConsumidorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscaConsumidorKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField37ActionPerformed
+        if (tfBuscaConsumidor.getText() != null && tfBuscaConsumidor.getText().length() >2) {
+            tbConsumidoHidro.removeAll();
 
-    private void jFormattedTextField38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField38ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField38ActionPerformed
+            List<Consumidor> consumi = consuControl.consultarLista();
+            DefaultTableModel model = (DefaultTableModel) tbConsumidoHidro.getModel();
+            model.setNumRows(0);
 
-    private void jFormattedTextField39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField39ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField39ActionPerformed
+            for (Consumidor consu : consumi) {
+                model.addRow(new Object[]{
+                    consu.getIdConsumidor(),
+                    consu.getNome(),
+                    consu.getCpf(),
+                    consu.getContato()
+                });
+            }
+        }
+    }//GEN-LAST:event_tfBuscaConsumidorKeyTyped
 
-    private void jTextField77ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField77ActionPerformed
+    private void tfBuscaConsumidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfBuscaConsumidorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField77ActionPerformed
+    }//GEN-LAST:event_tfBuscaConsumidorActionPerformed
 
-    private void jTextField78ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField78ActionPerformed
+    private void btnBuscarConsumidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConsumidorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField78ActionPerformed
+        tbConsumidoHidro.removeAll();
+        List<Consumidor> consumidor = consuControl.consultarLista();
+        DefaultTableModel model = (DefaultTableModel) tbConsumidoHidro.getModel();
+        model.setNumRows(0);
 
-    private void jTextField79ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField79ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField79ActionPerformed
+        for (Consumidor consumi : consumidor) {
+            model.addRow(new Object[]{
+                consumi.getIdConsumidor(),
+                consumi.getNome(),
+                consumi.getCpf(),
+                consumi.getContato(),
+            });
+        }
+    }//GEN-LAST:event_btnBuscarConsumidorActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void tbConsumidoHidroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbConsumidoHidroMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+        int linha = tbConsumidoHidro.getSelectedRow();
+        consumidorAtual = consuControl.consultarPorId(Integer.parseInt(tbConsumidoHidro.getValueAt(linha, 0).toString()));
+        if (consumidorAtual != null) {
+            consumidorAtual.setIdConsumidor(consumidorAtual.getIdConsumidor());
+            tfconsumidorHidro.setText(consumidorAtual.getNome());
+            tfIdConsumidor.setText(String.valueOf(consumidorAtual.getIdConsumidor()));
+            Hidrometro.setSelectedIndex(0);
+            tfBuscaConsumidor.setText("");
+            tbConsumidoHidro.removeAll();
+        }
+    }//GEN-LAST:event_tbConsumidoHidroMouseClicked
+
+    private void tbEnderecoHidroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEnderecoHidroMouseClicked
+        // TODO add your handling code here:
+        int linha = tbEnderecoHidro.getSelectedRow();
+        enderecoAtual = enderecoControl.consultarPorId(Integer.parseInt(tbEnderecoHidro.getValueAt(linha, 0).toString()));
+        if (enderecoAtual != null) {
+            enderecoAtual.setIdEndereco(enderecoAtual.getIdEndereco());
+            tfIdEndereco.setText(String.valueOf(enderecoAtual.getIdEndereco()));
+            tfEndereçoHidrometro.setText(enderecoAtual.getRua());
+            DistritoHidrometro.setText(String.valueOf(enderecoAtual.getDistrito()));
+            tfCidadeHidrometro.setText(String.valueOf(enderecoAtual.getCidade()));
+            Hidrometro.setSelectedIndex(0);
+            tfBuscaEndereco.setText("");
+            tbEnderecoHidro.removeAll();
+           
+        }
+    }//GEN-LAST:event_tbEnderecoHidroMouseClicked
+
+    private void btnPesquisaEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaEnderecoActionPerformed
+        // TODO add your handling code here:
+        tbEnderecoHidro.removeAll();
+        List<Endereco> endereco = enderecoControl.consultarLista();
+        DefaultTableModel model = (DefaultTableModel) tbEnderecoHidro.getModel();
+        model.setNumRows(0);
+
+        for (Endereco Ender : endereco) {
+            model.addRow(new Object[]{
+                Ender.getIdEndereco(),
+                Ender.getRua(),
+                Ender.getNumero(),
+                Ender.getDistrito(),
+                Ender.getCidade(),
+            });
+        }
+    }//GEN-LAST:event_btnPesquisaEnderecoActionPerformed
+
+    private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
+        Integer senha = null;
+        try {
+            senha = Integer.parseInt(new String(jpUsuario.getPassword()));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Senha deve ser numérica", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+
+        if (senha != null) {
+            UsuarioControler controler = new UsuarioControler();
+            System.out.println(cbTipoUsuario.getSelectedItem().toString());
+            System.out.println(cbTipoUsuario.getSelectedItem());
+
+            Usuario usuario = new Usuario(String.valueOf(cbTipoUsuario.getSelectedItem()), tfNomeUsuario.getText(), senha);
+
+            if (usuarioAtual != null && usuarioAtual.getIdUsuario() > 0) {
+                usuario.setIdUsuario(usuarioAtual.getIdUsuario());
+                controler.atualizar(usuario);
+                JOptionPane.showMessageDialog(this, "Usuário alterado com sucesso!", "ERRO", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                controler.cadastrarNovo(usuario);
+                JOptionPane.showMessageDialog(this, "Usuário salvo com sucesso!", "ERRO", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnGravarActionPerformed
+
+    private void tfIdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdUsuarioActionPerformed
+
+    }//GEN-LAST:event_tfIdUsuarioActionPerformed
+
+    private void cbTipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbTipoUsuarioActionPerformed
+
+    private void btnRemoverUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverUsuarioActionPerformed
+
+        int opcao = JOptionPane.showConfirmDialog(jPanel41, "Deseja realmente excluir o usuário?", "Exclusão de Usuário", JOptionPane.YES_NO_OPTION);
+
+        if (opcao == 0) {
+            Boolean deletado = usuController.deletar(usuarioAtual);
+
+            if (deletado) {
+                JOptionPane.showMessageDialog(this, "Usuário removido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                limparTelaUsuario();
+            } else {
+                JOptionPane.showMessageDialog(this, "Ocorreu um erro ao remover o usuário!", "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnRemoverUsuarioActionPerformed
+
+    private void tfNomeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeUsuarioActionPerformed
+
+    }//GEN-LAST:event_tfNomeUsuarioActionPerformed
+
+    private void tfNomeUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNomeUsuarioKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            usuarioAtual = usuController.pesquisarPorNome(tfNomeUsuario.getText());
+            preencheUsuarioNaTela();
+        }
+    }//GEN-LAST:event_tfNomeUsuarioKeyPressed
+
+    private void tfNomeUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNomeUsuarioKeyTyped
+
+    }//GEN-LAST:event_tfNomeUsuarioKeyTyped
+
+    private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
+        limparTelaUsuario();
+    }//GEN-LAST:event_btnNovo1ActionPerformed
+
+    private void tfBuscaUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscaUsuarioKeyTyped
+        if (tfBuscaUsuario.getText() != null && tfBuscaUsuario.getText().length() > 3) {
+            tbUsuarios.removeAll();
+
+            List<Usuario> users = usuController.consultarListaPorTermo(tfBuscaUsuario.getText());
+            DefaultTableModel model = (DefaultTableModel) tbUsuarios.getModel();
+            model.setNumRows(0);
+
+            for (Usuario user : users) {
+                model.addRow(new Object[]{
+                    user.getIdUsuario(),
+                    user.getLogin(),
+                    user.getTipoUsuario()
+                });
+            }
+        }
+    }//GEN-LAST:event_tfBuscaUsuarioKeyTyped
+
+    private void tbUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUsuariosMouseClicked
+        int linha = tbUsuarios.getSelectedRow();
+        usuarioAtual = usuController.pesquisaPorId(Integer.parseInt(tbUsuarios.getValueAt(linha, 0).toString()));
+        if (usuarioAtual != null) {
+            preencheUsuarioNaTela();
+            usuarios.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_tbUsuariosMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
+        tbUsuarios.removeAll();
+
+        List<Usuario> users = usuController.consultarLista();
+        DefaultTableModel model = (DefaultTableModel) tbUsuarios.getModel();
+        model.setNumRows(0);
+
+        for (Usuario user : users) {
+            model.addRow(new Object[]{
+                user.getIdUsuario(),
+                user.getLogin(),
+                user.getTipoUsuario()
+            });
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField2ActionPerformed
-
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField12ActionPerformed
-
+    
+    private void preencherHidrometro(){
+        IDHidroCadastro.setText(String.valueOf(hidroAtual.getIdHidrometro()));
+        if (hidroAtual.isSituacao() == true) {
+            situacaoHidro.setSelectedIndex(1);
+        } else {
+            situacaoHidro.setSelectedIndex(0);
+        }
+   
+        situacaoHidro.setSelectedItem(hidroAtual.isSituacao());
+        situacaoHidro.setSelectedItem(hidroAtual.isSituacao());
+        tfEndereçoHidrometro.setText(hidroAtual.getEndereco().getRua() 
+                +"  "+hidroAtual.getEndereco().getNumero());
+        tagHidrometro.setText(String.valueOf(hidroAtual.getTagHidrometro()));
+        tfCidadeHidrometro.setText(hidroAtual.getEndereco().getCidade());
+        DistritoHidrometro.setText(hidroAtual.getEndereco().getDistrito());
+        LeituraInicialHidr.setText(String.valueOf(hidroAtual.getLeituraInstalacao()));
+        tfconsumidorHidro.setText(hidroAtual.getConsumidor().getNome()); 
+        tfIdEndereco.setText(String.valueOf(hidroAtual.getEndereco().getIdEndereco()));
+        tfIdConsumidor.setText(String.valueOf(hidroAtual.getConsumidor().getIdConsumidor()));
+    }
+    
+    private void preencheUsuarioNaTela() {
+        tfIdUsuario.setText(String.valueOf(usuarioAtual.getIdUsuario()));
+        jpUsuario.setText(String.valueOf(usuarioAtual.getSenha()));
+        cbTipoUsuario.setSelectedItem(usuarioAtual.getTipoUsuario());
+        tfNomeUsuario.setText(usuarioAtual.getLogin());
+    }
+    
+    private void limparTelaHidro() {
+        hidroAtual = null;
+        tfIdConsumidor.setText("");
+        tfIdEndereco.setText("");
+        IDHidroCadastro.setText("");
+        situacaoHidro.setSelectedIndex(2);
+        tagHidrometro.setText("");
+        tfEndereçoHidrometro.setText("");
+        tfCidadeHidrometro.setText("");
+        DistritoHidrometro.setText("");
+        LeituraInicialHidr.setText("");
+        tfconsumidorHidro.setText("");
+        tbHidrometro.removeAll();
+        DefaultTableModel model = (DefaultTableModel) tbHidrometro.getModel();
+        model.setNumRows(0);
+    }
+    
+    private void limparTelaUsuario() {
+        usuarioAtual = null;
+        tfIdUsuario.setText("");
+        jpUsuario.setText("");
+        cbTipoUsuario.setSelectedIndex(3);
+        tfNomeUsuario.setText("");
+        tbUsuarios.removeAll();
+        DefaultTableModel model = (DefaultTableModel) tbUsuarios.getModel();
+        model.setNumRows(0);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField CPFCliente;
     private javax.swing.JTabbedPane Cliente;
+    private javax.swing.JFormattedTextField ConsumoLeitura;
+    private javax.swing.JFormattedTextField ContatoCliente;
+    private javax.swing.JFormattedTextField DistritoHidrometro;
+    private javax.swing.JButton EditarCliente;
+    private javax.swing.JButton EditarGastos;
+    private javax.swing.JButton EditarLeitura;
+    private javax.swing.JButton EditarPoço;
     private javax.swing.JTabbedPane Gastos;
     private javax.swing.JTabbedPane Hidrometro;
+    private javax.swing.JFormattedTextField IDCliente;
+    private javax.swing.JFormattedTextField IDHidroCadastro;
+    private javax.swing.JFormattedTextField IDHidrometro;
+    private javax.swing.JFormattedTextField IDHidrometroLeitura;
+    private javax.swing.JFormattedTextField IDPoço;
     private javax.swing.JTabbedPane Leitura;
-    private javax.swing.JTabbedPane Leiturista;
+    private javax.swing.JFormattedTextField LeituraAnterior;
+    private javax.swing.JFormattedTextField LeituraAtual;
+    private javax.swing.JFormattedTextField LeituraInicialHidr;
+    private javax.swing.JFormattedTextField Mespoço1;
+    private javax.swing.JFormattedTextField Mespoço2;
+    private javax.swing.JFormattedTextField Mespoço3;
+    private javax.swing.JFormattedTextField NomeCliente;
     private javax.swing.JTabbedPane Poco;
+    private javax.swing.JFormattedTextField Poço1;
+    private javax.swing.JFormattedTextField Poço2;
+    private javax.swing.JFormattedTextField Poço3;
+    private javax.swing.JButton SalvarCliente;
+    private javax.swing.JButton SalvarGastos;
+    private javax.swing.JButton SalvarLeitura;
+    private javax.swing.JButton SalvarPoço;
+    private javax.swing.JFormattedTextField UndCons1;
+    private javax.swing.JFormattedTextField UnidCons2;
+    private javax.swing.JFormattedTextField UnidCons3;
+    private javax.swing.JFormattedTextField UnidadeConsumidora;
+    private javax.swing.JFormattedTextField ValorEnergia1;
+    private javax.swing.JFormattedTextField ValorEnergia2;
+    private javax.swing.JFormattedTextField ValorEnergia3;
+    private javax.swing.JFormattedTextField ValorEnergiaTotal;
+    private javax.swing.JButton btnBuscaTodos;
+    private javax.swing.JButton btnBuscarConsumidor;
+    private javax.swing.JButton btnDeleteHidro;
+    private javax.swing.JButton btnGravar;
+    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnNovo1;
+    private javax.swing.JButton btnPesquisaEndereco;
+    private javax.swing.JButton btnRemoverUsuario;
+    private javax.swing.JButton btnSalvarHidro;
+    private javax.swing.JPanel cadastro;
+    private javax.swing.JComboBox<String> cbTipoUsuario;
+    private javax.swing.JPanel consulta;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField28;
-    private javax.swing.JFormattedTextField jFormattedTextField29;
-    private javax.swing.JFormattedTextField jFormattedTextField30;
-    private javax.swing.JFormattedTextField jFormattedTextField31;
-    private javax.swing.JFormattedTextField jFormattedTextField32;
-    private javax.swing.JFormattedTextField jFormattedTextField33;
-    private javax.swing.JFormattedTextField jFormattedTextField34;
-    private javax.swing.JFormattedTextField jFormattedTextField35;
-    private javax.swing.JFormattedTextField jFormattedTextField36;
-    private javax.swing.JFormattedTextField jFormattedTextField37;
-    private javax.swing.JFormattedTextField jFormattedTextField38;
-    private javax.swing.JFormattedTextField jFormattedTextField39;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
-    private javax.swing.JLabel jLabel102;
-    private javax.swing.JLabel jLabel103;
-    private javax.swing.JLabel jLabel104;
-    private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel106;
     private javax.swing.JLabel jLabel107;
     private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel111;
     private javax.swing.JLabel jLabel112;
@@ -1601,90 +1981,74 @@ public class NewJInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel115;
     private javax.swing.JLabel jLabel116;
     private javax.swing.JLabel jLabel117;
-    private javax.swing.JLabel jLabel118;
-    private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel120;
+    private javax.swing.JLabel jLabel121;
+    private javax.swing.JLabel jLabel122;
+    private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel84;
-    private javax.swing.JLabel jLabel85;
-    private javax.swing.JLabel jLabel86;
-    private javax.swing.JLabel jLabel87;
-    private javax.swing.JLabel jLabel88;
-    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabel90;
-    private javax.swing.JLabel jLabel91;
-    private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
-    private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
-    private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
-    private javax.swing.JPanel jPanel35;
-    private javax.swing.JPanel jPanel36;
-    private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
+    private javax.swing.JPanel jPanel41;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedCliente;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField56;
-    private javax.swing.JTextField jTextField57;
-    private javax.swing.JTextField jTextField58;
-    private javax.swing.JTextField jTextField59;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField60;
-    private javax.swing.JTextField jTextField61;
-    private javax.swing.JTextField jTextField62;
-    private javax.swing.JTextField jTextField63;
-    private javax.swing.JTextField jTextField64;
-    private javax.swing.JTextField jTextField65;
-    private javax.swing.JTextField jTextField66;
-    private javax.swing.JTextField jTextField67;
-    private javax.swing.JTextField jTextField68;
-    private javax.swing.JTextField jTextField69;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField70;
-    private javax.swing.JTextField jTextField71;
-    private javax.swing.JTextField jTextField72;
-    private javax.swing.JTextField jTextField73;
-    private javax.swing.JTextField jTextField74;
-    private javax.swing.JTextField jTextField75;
-    private javax.swing.JTextField jTextField76;
-    private javax.swing.JTextField jTextField77;
-    private javax.swing.JTextField jTextField78;
-    private javax.swing.JTextField jTextField79;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JPanel jpConsumidor;
+    private javax.swing.JPanel jpEndereco;
+    private javax.swing.JPasswordField jpUsuario;
+    private javax.swing.JTabbedPane jtpBuscas;
+    private javax.swing.JLabel lbBuscaHidro;
+    private javax.swing.JLabel lbBuscaUsuario;
+    private javax.swing.JPanel panelBuscaUsuario;
+    private javax.swing.JPanel panelCadastroUsuario;
+    private javax.swing.JComboBox<String> situacaoHidro;
+    private javax.swing.JFormattedTextField tagHidrometro;
+    private javax.swing.JTable tbConsumidoHidro;
+    private javax.swing.JTable tbEnderecoHidro;
+    private javax.swing.JTable tbHidrometro;
+    private javax.swing.JTable tbUsuarios;
+    private javax.swing.JTextField tfBuscaConsumidor;
+    private javax.swing.JTextField tfBuscaEndereco;
+    private javax.swing.JTextField tfBuscaHidro;
+    private javax.swing.JTextField tfBuscaUsuario;
+    private javax.swing.JFormattedTextField tfCidadeHidrometro;
+    private javax.swing.JFormattedTextField tfEndereçoHidrometro;
+    private javax.swing.JTextField tfIdConsumidor;
+    private javax.swing.JTextField tfIdEndereco;
+    private javax.swing.JFormattedTextField tfIdUsuario;
+    private javax.swing.JTextField tfNomeUsuario;
+    private javax.swing.JFormattedTextField tfconsumidorHidro;
+    private javax.swing.JTabbedPane usuarios;
     // End of variables declaration//GEN-END:variables
 }

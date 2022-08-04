@@ -4,8 +4,6 @@
  */
 package br.com.LeituraAgua.DAO;
 
-import br.com.model.Distrito;
-import br.com.model.Endereco;
 import br.com.model.Poco;
 import java.sql.PreparedStatement;
 import java.sql.*;
@@ -24,11 +22,10 @@ public class PocoDAO {
 
         try {
 
-            String sqlcadastra = "INSERT INTO poco ( unidade_consumidora,id_distrito) values (?, ?)";
+            String sqlcadastra = "INSERT INTO poco ( unidade_consumidora) values (?)";
             ConexaoDAO conDao = ConexaoDAO.getInstance();
             stmt = conDao.connect.prepareStatement(sqlcadastra, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, obj.getUnidadeConsumidora());
-            stmt.setInt(2, obj.getDistrito().getIdDistrito());
             stmt.executeUpdate();
 
             try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
@@ -53,14 +50,11 @@ public class PocoDAO {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
 
-            DistritoDAO distDao = new DistritoDAO();
-
             while (rs.next()) {
 
                 Poco obj = new Poco();
                 obj.setIdPoco(rs.getInt("id_poco"));
                 obj.setUnidadeConsumidora(rs.getInt("unidade_consumidora"));
-                obj.setDistrito(distDao.listarPorId(rs.getInt("id_distrito")));
 
                 return obj;
             }
@@ -80,14 +74,11 @@ public class PocoDAO {
             stmt = conDao.connect.prepareStatement(sqlListar);
             ResultSet rs = stmt.executeQuery();
 
-            DistritoDAO distDao = new DistritoDAO();
-
             while (rs.next()) {
 
                 Poco obj = new Poco();
                 obj.setIdPoco(rs.getInt("id_poco"));
                 obj.setUnidadeConsumidora(rs.getInt("unidade_consumidora"));
-                obj.setDistrito(distDao.listarPorId(rs.getInt("id_distrito")));
                 lista.add(obj);
             }
         } catch (SQLException add) {
@@ -98,13 +89,11 @@ public class PocoDAO {
 
     public Poco atualizar(Poco obj) {
         try {
-            String sqlAtualiza = "UPDATE poco SET (unidade_consumidora=?,"
-                    + "id_distrito=?)  WHERE id_poco = ?";
+            String sqlAtualiza = "UPDATE poco SET (unidade_consumidora=?) WHERE id_poco = ?";
             ConexaoDAO conDao = ConexaoDAO.getInstance();
             stmt = conDao.connect.prepareStatement(sqlAtualiza);
             stmt.setInt(1, obj.getUnidadeConsumidora());
-            stmt.setInt(2, obj.getDistrito().getIdDistrito());
-            stmt.setInt(3, obj.getIdPoco());
+            stmt.setInt(2, obj.getIdPoco());
             stmt.executeUpdate();
             
             return listarPorId(obj.getIdPoco());

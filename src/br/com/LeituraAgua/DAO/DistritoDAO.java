@@ -20,25 +20,27 @@ public class DistritoDAO {
 
     private PreparedStatement stmt;
 
-    public Distrito cadastrar(Distrito dist) {
+    public Distrito cadastrar(Distrito obj) {
+        
         try {
-            String sqlcadastra = " INSERT INTO distrito (nome_distrito, cidade) values(?,?)";
+            
+            String sqlcadastra = " INSERT INTO distrito (nome_distrito, cidade ) values(?,?)";
             ConexaoDAO conDao = ConexaoDAO.getInstance();
             stmt = conDao.connect.prepareStatement(sqlcadastra, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, dist.getNomeDistrito());
-            stmt.setString(2, dist.getCidade());
+            stmt.setString(1, obj.getNomeDistrito());
+            stmt.setString(2, obj.getCidade());
             stmt.executeUpdate();
 
-            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+            try ( ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    return listarPorId(generatedKeys.getInt(1));
+                    return listarPorId(generatedKeys.getInt(0));
                 } else {
                     throw new SQLException("Ocorreu um erro ao cadastrar o distrito!");
                 }
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException add) {
+            add.printStackTrace();
         }
         return null;
     }
@@ -52,7 +54,8 @@ public class DistritoDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Distrito dist = new Distrito(rs.getInt("id_distrito"), rs.getString("nome_distrito"), rs.getString("cidade"));
+                Distrito dist = new Distrito(rs.getInt("id_distrito"),
+                rs.getString("nome_distrito"), rs.getString("cidade"));
                 return dist;
             }
         } catch (SQLException e) {
@@ -73,7 +76,7 @@ public class DistritoDAO {
                 Distrito dist = new Distrito(rs.getInt("id_distrito"), rs.getString("nome_distrito"), rs.getString("cidade"));
                 return dist;
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -100,19 +103,43 @@ public class DistritoDAO {
 
         } catch (SQLException add) {
             lista = null;
+            add.printStackTrace();
+        }
+        return lista;
+    }
+    
+    public List <Distrito> listarPorTermo(String termo) {
+        List<Distrito> lista = new ArrayList<Distrito> ();
+        String sqlListar = "SELECT * FROM distrito WHERE nome_distrito like ?";
+        try {
+            ConexaoDAO conDao = ConexaoDAO.getInstance();
+            stmt = conDao.connect.prepareStatement(sqlListar);
+            stmt.setString(1, "%" + termo + "%");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Distrito dist = new Distrito();
+                dist.setIdDistrito(rs.getInt("id_distrito"));
+                dist.setNomeDistrito(rs.getString("nome_distrito"));
+                dist.setCidade(rs.getString("cidade"));
+                lista.add(dist);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return lista;
     }
 
     public Distrito atualizar(Distrito obj) {
         try {
-            String sqlAtualiza = "UPDATE distrito SET (nome_distrito=?,"
-                    + "cidade=?)  WHERE id_distrito = ?";
+            String sqlAtualiza = "UPDATE distrito SET nome_distrito=?,"
+                    + "cidade=?  WHERE id_distrito = ?";
+            System.out.println(obj.getIdDistrito());
             ConexaoDAO conDao = ConexaoDAO.getInstance();
             stmt = conDao.connect.prepareStatement(sqlAtualiza);
             stmt.setString(1, obj.getNomeDistrito());
             stmt.setString(2, obj.getCidade());
-            stmt.setInt(5, obj.getIdDistrito());
+            stmt.setInt(3, obj.getIdDistrito());
             stmt.executeUpdate();
 
             return listarPorId(obj.getIdDistrito());
@@ -129,12 +156,11 @@ public class DistritoDAO {
             ConexaoDAO conDao = ConexaoDAO.getInstance();
             stmt = conDao.connect.prepareStatement(sqlDel);
             stmt.setInt(1, obj.getIdDistrito());
-            int retornoDelet = stmt.executeUpdate();
+            int rowCount = stmt.executeUpdate();
             
-            if(retornoDelet ==1) {
+            if (rowCount > 0) {
                 return true;    
             }
-            
         } catch (SQLException e) {
             e.printStackTrace();
         }

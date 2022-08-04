@@ -10,23 +10,22 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class UsuarioDAO {
 
-    private PreparedStatement stmt;
+   private PreparedStatement stmt;
 
     public Usuario cadastrar(Usuario obj) {
 
         try {
-            String sqlcadastra = "INSERT INTO usuario (tipo_usuario,login, senha ) values (?, ?, ?)";
+            String sqlcadastra = "INSERT INTO usuario (tipo_usuario, login, senha ) values (?, ?, ?)";
             ConexaoDAO conDao = ConexaoDAO.getInstance();
-            stmt = conDao.connect.prepareStatement(sqlcadastra, Statement.RETURN_GENERATED_KEYS); 
+            stmt = conDao.connect.prepareStatement(sqlcadastra, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, obj.getTipoUsuario());
             stmt.setString(2, obj.getLogin());
             stmt.setInt(3, obj.getSenha());
             stmt.executeUpdate();
 
-            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+            try ( ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     return listarPorId(generatedKeys.getInt(1));
                 } else {
@@ -39,8 +38,8 @@ public class UsuarioDAO {
         }
         return null;
     }
-    
-    public Usuario listarPorId(Integer id) {
+
+    public Usuario listarPorId(int id) {
         String sqlListar = "SELECT * FROM usuario WHERE id_usuario = ?";
         try {
             ConexaoDAO conDao = ConexaoDAO.getInstance();
@@ -55,7 +54,7 @@ public class UsuarioDAO {
                 obj.setTipoUsuario(rs.getString("tipo_usuario"));
                 obj.setLogin(rs.getString("login"));
                 obj.setSenha(rs.getInt("senha"));
-                
+
                 return obj;
             }
 
@@ -64,7 +63,6 @@ public class UsuarioDAO {
         }
         return null;
     }
-    
 
     public Usuario logarUsuario(String login, int senha) {
         String sqlLogin = "SELECT * FROM usuario where (login = ? and senha = ?)";
@@ -76,7 +74,8 @@ public class UsuarioDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Usuario usuario = new Usuario(rs.getInt("id_usuario"), rs.getString("tipo_usuario"), rs.getString("login"), rs.getInt("senha"));
+                Usuario usuario = new Usuario(rs.getInt("id_usuario"),
+                        rs.getString("tipo_usuario"), rs.getString("login"), rs.getInt("senha"));
                 return usuario;
             }
         } catch (SQLException e) {
@@ -87,17 +86,20 @@ public class UsuarioDAO {
 
     public List<Usuario> listar() {
         List<Usuario> lista = new ArrayList<Usuario>();
-        String sqlListar = "SELECT* FRON usuario ";
+        String sqlListar = "SELECT * FROM usuario ";
 
         try {
-            stmt = ConexaoDAO.connect.prepareStatement(sqlListar);
+            ConexaoDAO con = ConexaoDAO.getInstance();
+            stmt = con.connect.prepareStatement(sqlListar);
+
             ResultSet result = stmt.executeQuery();
 
             while (result.next()) {
                 Usuario obj = new Usuario();
                 obj.setIdUsuario(result.getInt("id_usuario"));
                 obj.setTipoUsuario(result.getString("tipo_usuario"));
-                obj.setTipoUsuario(result.getString("login_usuario"));
+                obj.setLogin(result.getString("login"));
+                obj.setSenha(result.getInt("senha"));
                 lista.add(obj);
             }
         } catch (SQLException add) {
@@ -115,7 +117,8 @@ public class UsuarioDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Usuario usuario = new Usuario(rs.getInt("id_usuario"), rs.getString("tipo_usuario"), rs.getString("login"), rs.getInt("senha"));
+                Usuario usuario = new Usuario(rs.getInt("id_usuario"),
+                        rs.getString("tipo_usuario"), rs.getString("login"), rs.getInt("senha"));
                 return usuario;
             }
         } catch (SQLException e) {
@@ -124,17 +127,45 @@ public class UsuarioDAO {
         return null;
     }
 
+    public List<Usuario> listarPorTermo(String termo) {
+        List<Usuario> lista = new ArrayList<Usuario>();
+        String sqlLogin = "SELECT * FROM usuario WHERE login like ? or id_usuario like ?";
+        try {
+            ConexaoDAO con = ConexaoDAO.getInstance();
+            stmt = con.connect.prepareStatement(sqlLogin);
+            stmt.setString(1, "%" + termo + "%");
+            stmt.setString(2, "%" + termo + "%");
+            ResultSet result = stmt.executeQuery();
+
+            while (result.next()) {
+                Usuario obj = new Usuario();
+                obj.setIdUsuario(result.getInt("id_usuario"));
+                obj.setTipoUsuario(result.getString("tipo_usuario"));
+                obj.setLogin(result.getString("login"));
+                obj.setSenha(result.getInt("senha"));
+                lista.add(obj);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            lista = null;
+        }
+        return lista;
+    }
+
     public Usuario atualizar(Usuario obj) {
         try {
-            String sqlAtualiza = "UPDATE usuario SET tipoUsuario=?,"
-                    + "login=?, senha=? WHERE id_usuario = ?";
-            stmt = ConexaoDAO.connect.prepareStatement(sqlAtualiza);
+            String sqlAtualiza = "UPDATE usuario SET tipo_Usuario=?, login=?, senha=? "
+                    + " WHERE id_usuario=?";
+            ConexaoDAO conDao = ConexaoDAO.getInstance();
+            stmt = conDao.connect.prepareStatement(sqlAtualiza);
             stmt.setString(1, obj.getTipoUsuario());
             stmt.setString(2, obj.getLogin());
             stmt.setInt(3, obj.getSenha());
             stmt.setInt(4, obj.getIdUsuario());
-            stmt.executeUpdate();           
-            
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("usuadio atualisado com sucesso!");
+            }
             return listarPorId(obj.getIdUsuario());
 
         } catch (SQLException add) {
@@ -149,16 +180,15 @@ public class UsuarioDAO {
             ConexaoDAO con = ConexaoDAO.getInstance();
             stmt = con.connect.prepareStatement(sqlDel);
             stmt.setInt(1, obj.getIdUsuario());
-            int retornoDelet = stmt.executeUpdate();
-            
-            if(retornoDelet ==1) {
-                return true;    
-            }
+            int rowCount = stmt.executeUpdate();
 
+            if (rowCount > 0) {
+                return true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-            return false;
+        return false;
     }
 
 }

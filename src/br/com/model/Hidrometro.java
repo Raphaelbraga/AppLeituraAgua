@@ -7,27 +7,37 @@ package br.com.model;
  */
 public class Hidrometro {
     private int idHidrometro;
+    private int tagHidrometro;
     private double leituraInstalacao;
     private boolean situacao;
     private Consumidor consumidor;
     private Endereco endereco;
 
-    public Hidrometro(int idHidrometro, double leituraInstalacao, boolean situacao, Consumidor consumidor, Endereco endereco) {
+    public Hidrometro() {
+        consumidor = new Consumidor();
+        endereco = new Endereco();
+    }
+
+    public Hidrometro(int idHidrometro, int tagHidrometro, double leituraInstalacao, boolean situacao, Consumidor consumidor, Endereco endereco) {
         this.idHidrometro = idHidrometro;
+        this.tagHidrometro = tagHidrometro;
         this.leituraInstalacao = leituraInstalacao;
         this.situacao = situacao;
         this.consumidor = consumidor;
         this.endereco = endereco;
     }
-
-    public Hidrometro() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
-    // gerado delegate methods
+    //--------DELEGATE METHODS-----------------
+
     public int getIdConsumidor() {
         return consumidor.getIdConsumidor();
     }
+
+    public void setIdConsumidor(int idConsumidor) {
+        consumidor.setIdConsumidor(idConsumidor);
+    }
+    
+    
 
     public String getNome() {
         return consumidor.getNome();
@@ -37,21 +47,15 @@ public class Hidrometro {
         return consumidor.getCpf();
     }
 
-    public int getIdDistrito() {
-        return endereco.getIdDistrito();
-    }
-
-    public String getNomeDistrito() {
-        return endereco.getNomeDistrito();
-    }
-
-    public String getCidade() {
-        return endereco.getCidade();
-    }
-
     public int getIdEndereco() {
         return endereco.getIdEndereco();
     }
+
+    public void setIdEndereco(int idEndereco) {
+        endereco.setIdEndereco(idEndereco);
+    }
+    
+    
 
     public String getRua() {
         return endereco.getRua();
@@ -61,18 +65,37 @@ public class Hidrometro {
         return endereco.getNumero();
     }
 
-    public Distrito getDistrito() {
+    public String getComplemento() {
+        return endereco.getComplemento();
+    }
+
+    public String getDistrito() {
         return endereco.getDistrito();
     }
+
+    public String getBairro() {
+        return endereco.getBairro();
+    }
+
+    public String getCidade() {
+        return endereco.getCidade();
+    }
     
-    
-    //gerado get and sets
+
     public int getIdHidrometro() {
         return idHidrometro;
     }
 
     public void setIdHidrometro(int idHidrometro) {
         this.idHidrometro = idHidrometro;
+    }
+
+    public int getTagHidrometro() {
+        return tagHidrometro;
+    }
+
+    public void setTagHidrometro(int tagHidrometro) {
+        this.tagHidrometro = tagHidrometro;
     }
 
     public double getLeituraInstalacao() {
@@ -83,7 +106,7 @@ public class Hidrometro {
         this.leituraInstalacao = leituraInstalacao;
     }
 
-    public boolean isSituacao() {
+    public boolean isSituacao() {     
         return situacao;
     }
 
@@ -109,7 +132,8 @@ public class Hidrometro {
 
     @Override
     public String toString() {
-        return "Hidrometro{" + "idHidrometro=" + idHidrometro + ", leituraInstalacao=" + leituraInstalacao + ", situacao=" + situacao + ", consumidor=" + consumidor + ", endereco=" + endereco + '}';
-    } 
+        return "Hidrometro{" + "idHidrometro=" + idHidrometro + ", tagHidrometro=" + tagHidrometro + ", leituraInstalacao=" + leituraInstalacao + ", situacao=" + situacao + ", consumidor=" + consumidor + ", endereco=" + endereco + '}';
+    }
     
+       
 }

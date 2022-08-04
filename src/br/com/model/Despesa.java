@@ -17,17 +17,15 @@ public class Despesa {
     private double valorFaturaEnergia;
     private Poco poco;
 
+    public Despesa() {
+    }
+
     public Despesa(int idDespesa, Date mesVigente, double valorFaturaEnergia, Poco poco) {
         this.idDespesa = idDespesa;
         this.mesVigente = mesVigente;
         this.valorFaturaEnergia = valorFaturaEnergia;
         this.poco = poco;
     }
-
-    public Despesa() {
-    }
-    
-    
 
     public int getIdDespesa() {
         return idDespesa;
@@ -61,10 +59,10 @@ public class Despesa {
         this.poco = poco;
     }
 
-    public Object getpoco() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    @Override
+    public String toString() {
+        return "Despesa{" + "idDespesa=" + idDespesa + ", mesVigente=" + mesVigente + ", valorFaturaEnergia=" + valorFaturaEnergia + ", poco=" + poco + '}';
     }
-    
     
     
 }

@@ -14,45 +14,23 @@ public class Endereco {
     private String rua;
     private int numero;
     private String complemento;
-    private Distrito distrito;
-   
+    private String distrito;
+    private String bairro;
+    private String cidade;
 
-    public Endereco(int idEndereco, String rua, int numero, String complemento, Distrito distrito) {
+    public Endereco() {
+    }
+
+    public Endereco(int idEndereco, String rua, int numero, String complemento, String distrito, String bairro, String cidade) {
         this.idEndereco = idEndereco;
         this.rua = rua;
         this.numero = numero;
         this.complemento = complemento;
         this.distrito = distrito;
+        this.bairro = bairro;
+        this.cidade = cidade;
     }
 
-    public Endereco() {
-    }
-
-    public int getIdDistrito() {
-        return distrito.getIdDistrito();
-    }
-
-    public void setIdDistrito(int idDistrito) {
-        distrito.setIdDistrito(idDistrito);
-    }
-
-    public String getNomeDistrito() {
-        return distrito.getNomeDistrito();
-    }
-
-    public void setNomeDistrito(String nomeDistrito) {
-        distrito.setNomeDistrito(nomeDistrito);
-    }
-
-    public String getCidade() {
-        return distrito.getCidade();
-    }
-
-    public void setCidade(String cidade) {
-        distrito.setCidade(cidade);
-    }
-
-  
     public int getIdEndereco() {
         return idEndereco;
     }
@@ -85,18 +63,33 @@ public class Endereco {
         this.complemento = complemento;
     }
 
-    public Distrito getDistrito() {
+    public String getDistrito() {
         return distrito;
     }
 
-    public void setDistrito(Distrito distrito) {
+    public void setDistrito(String distrito) {
         this.distrito = distrito;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     @Override
     public String toString() {
-        return "Endereco{" + "idEndereco=" + idEndereco + ", rua=" + rua + ", numero=" + numero + ", complemento=" + complemento + ", distrito=" + distrito + '}';
+        return "Endereco{" + "idEndereco=" + idEndereco + ", rua=" + rua + ", numero=" + numero + ", complemento=" + complemento + ", distrito=" + distrito + ", bairro=" + bairro + ", cidade=" + cidade + '}';
     }
-    
-    
+       
 }

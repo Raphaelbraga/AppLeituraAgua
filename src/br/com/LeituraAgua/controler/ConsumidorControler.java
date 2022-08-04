@@ -23,18 +23,18 @@ public class ConsumidorControler {
     
     public Consumidor cadastraNovo(Consumidor obj){
         ConsumidorDAO solicita = new ConsumidorDAO();
-        Consumidor consumidorExist = solicita.listarPorId(obj.getIdConsumidor());
+        Consumidor consumidorExist = solicita.buscaPorCpf(obj.getCpf());
 
         if (consumidorExist != null) {
             setMensagem("Erro - Consumidor ja existe!");
+            return consumidorExist;
         } else {
             Consumidor novoConsumidor = solicita.cadastrar(obj);
             return novoConsumidor;
         }
-        return null;
     }
     
-    public List<Consumidor> consultarLista(Consumidor obj) {
+    public List<Consumidor> consultarLista() {
         ConsumidorDAO consulta = new ConsumidorDAO();
         List<Consumidor> consumidorLista = consulta.listar();
 
@@ -49,7 +49,7 @@ public class ConsumidorControler {
 
     public Consumidor atualizar(Consumidor obj) {
         ConsumidorDAO atualiza = new ConsumidorDAO();
-        Consumidor idConsumidor = atualiza.listarPorId(obj.getIdConsumidor());
+        Consumidor idConsumidor = atualiza.buscaPorId(obj.getIdConsumidor());
         
         if (idConsumidor != null) {
             setMensagem("Erro - Consumidor não existe!");
@@ -62,7 +62,7 @@ public class ConsumidorControler {
     
     public Consumidor deletar(Consumidor obj) {
         ConsumidorDAO deleta = new ConsumidorDAO();
-        Consumidor idConsumidor = deleta.listarPorId(obj.getIdConsumidor());
+        Consumidor idConsumidor = deleta.buscaPorId(obj.getIdConsumidor());
 
         if (idConsumidor != null) {
             setMensagem("Erro -Consumidor não existe!");
@@ -75,6 +75,29 @@ public class ConsumidorControler {
         return null;
     }
        
+    public Consumidor consultarPorCpf (String cpf){
+       ConsumidorDAO consultar = new ConsumidorDAO();
+        Consumidor novoConsumidor = consultar.buscaPorCpf(cpf);
+
+        if (novoConsumidor == null) {
+            setMensagem("Erro - Usuário não existe!");
+        } else {
+            return novoConsumidor;
+        }
+        return null;
+    }
+    
+    public Consumidor consultarPorId (int id){
+       ConsumidorDAO consultar = new ConsumidorDAO();
+        Consumidor novoConsumidor = consultar.buscaPorId(id);
+
+        if (novoConsumidor == null) {
+            setMensagem("Erro - Usuário não existe!");
+        } else {
+            return novoConsumidor;
+        }
+        return null;
+    }
     
     public String getMensagem() {
         return mensagem;

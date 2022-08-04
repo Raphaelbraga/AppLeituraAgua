@@ -15,19 +15,22 @@ public class Usuario {
     private String login;
     private int senha;
 
+    public Usuario() {
+    }
+
     public Usuario(int idUsuario, String tipoUsuario, String login, int senha) {
         this.idUsuario = idUsuario;
         this.tipoUsuario = tipoUsuario;
         this.login = login;
         this.senha = senha;
     }
-    
-    public Usuario() {
+
+    public Usuario(String tipo, String login, int senha) {
+        this.tipoUsuario = tipo;
+        this.login = login;
+        this.senha = senha; 
     }
 
-    public Usuario(String string, String string0, int aInt) {
-    }
-    
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -64,8 +67,5 @@ public class Usuario {
     public String toString() {
         return "Usuario{" + "idUsuario=" + idUsuario + ", tipoUsuario=" + tipoUsuario + ", login=" + login + ", senha=" + senha + '}';
     }
-
-    
-    
-    
+        
 }

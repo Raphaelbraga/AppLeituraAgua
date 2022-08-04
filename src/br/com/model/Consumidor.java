@@ -17,6 +17,7 @@ public class Consumidor {
     private String contato;
 
     public Consumidor() {
+        
     }
 
     public Consumidor(int idConsumidor, String nome, String cpf, String contato) {
@@ -26,6 +27,12 @@ public class Consumidor {
         this.contato = contato;
     }
 
+    public Consumidor(String nome, String cpf, String contato) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.contato = contato;
+    }
+    
     public int getIdConsumidor() {
         return idConsumidor;
     }

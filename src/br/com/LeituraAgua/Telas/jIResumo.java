@@ -6,7 +6,12 @@
 package br.com.LeituraAgua.Telas;
 
 import br.com.LeituraAgua.DAO.UsuarioDAO;
+import br.com.LeituraAgua.controler.ConsumidorControler;
+import br.com.LeituraAgua.controler.UsuarioControler;
+import br.com.model.Usuario;
+import br.com.model.Consumidor;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -53,9 +58,10 @@ public class jIResumo extends javax.swing.JInternalFrame {
         Valorm3txt = new javax.swing.JLabel();
         Valorm3 = new javax.swing.JFormattedTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
-        Imprimirbotao = new javax.swing.JButton();
+        consultaCliente = new javax.swing.JButton();
         ValorTotaltxt = new javax.swing.JLabel();
         jFormattedTextField8 = new javax.swing.JFormattedTextField();
+        Imprimirbotao1 = new javax.swing.JButton();
 
         setBorder(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -68,17 +74,18 @@ public class jIResumo extends javax.swing.JInternalFrame {
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
         jPanel5.setForeground(new java.awt.Color(190, 190, 190));
+        jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel5.setMaximumSize(new java.awt.Dimension(2048, 1024));
         jPanel5.setMinimumSize(new java.awt.Dimension(1020, 785));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Emailtxt.setFont(new java.awt.Font("Sitka Banner", 1, 24)); // NOI18N
+        Emailtxt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         Emailtxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Emailtxt.setText("Email:");
         jPanel5.add(Emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 130, 40));
 
         Codigocliente.setBackground(new java.awt.Color(255, 255, 255));
-        Codigocliente.setFont(new java.awt.Font("Sitka Banner", 1, 24)); // NOI18N
+        Codigocliente.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         Codigocliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Codigocliente.setText("Código Cliente:");
         Codigocliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -94,12 +101,12 @@ public class jIResumo extends javax.swing.JInternalFrame {
         jPanel5.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 510, 40));
 
         hidrometrotxt.setBackground(new java.awt.Color(255, 255, 255));
-        hidrometrotxt.setFont(new java.awt.Font("Sitka Banner", 1, 24)); // NOI18N
+        hidrometrotxt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         hidrometrotxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hidrometrotxt.setText("Código Hidrômetro:");
         jPanel5.add(hidrometrotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 250, 40));
 
-        jLabel8.setFont(new java.awt.Font("Sitka Banner", 1, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Contato:");
         jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 120, 40));
@@ -120,7 +127,7 @@ public class jIResumo extends javax.swing.JInternalFrame {
         jPanel5.add(Contato, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 170, 220, 40));
 
         mestxt.setBackground(new java.awt.Color(0, 153, 255));
-        mestxt.setFont(new java.awt.Font("Sitka Banner", 1, 24)); // NOI18N
+        mestxt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         mestxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mestxt.setText("Mês:");
         mestxt.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -141,7 +148,7 @@ public class jIResumo extends javax.swing.JInternalFrame {
         });
         jPanel5.add(Mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 60, 160, 40));
 
-        TaxaAdmtxt.setFont(new java.awt.Font("Sitka Banner", 1, 24)); // NOI18N
+        TaxaAdmtxt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         TaxaAdmtxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TaxaAdmtxt.setText("Taxa Adm.");
         jPanel5.add(TaxaAdmtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 120, 40));
@@ -161,7 +168,7 @@ public class jIResumo extends javax.swing.JInternalFrame {
         });
         jPanel5.add(TaxaAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 300, 220, 40));
 
-        NomeClientetxt.setFont(new java.awt.Font("Sitka Banner", 1, 24)); // NOI18N
+        NomeClientetxt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         NomeClientetxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NomeClientetxt.setText("Nome:");
         jPanel5.add(NomeClientetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 130, 40));
@@ -182,12 +189,9 @@ public class jIResumo extends javax.swing.JInternalFrame {
         jPanel5.add(Hidrometro, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 60, 200, 40));
 
         Codigocliente1.setBorder(null);
-        try {
-            Codigocliente1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("### . ###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        Codigocliente1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         Codigocliente1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Codigocliente1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Codigocliente1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jPanel5.add(Codigocliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 170, 40));
 
@@ -200,7 +204,7 @@ public class jIResumo extends javax.swing.JInternalFrame {
         });
         jPanel5.add(Nomecliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 510, 40));
 
-        CPFtxt.setFont(new java.awt.Font("Sitka Banner", 1, 24)); // NOI18N
+        CPFtxt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         CPFtxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CPFtxt.setText("CPF:");
         jPanel5.add(CPFtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 240, 120, 40));
@@ -215,7 +219,7 @@ public class jIResumo extends javax.swing.JInternalFrame {
         CPF.setFont(new java.awt.Font("Source Serif Pro", 0, 24)); // NOI18N
         jPanel5.add(CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 240, 220, 40));
 
-        Consumom3txt.setFont(new java.awt.Font("Sitka Banner", 1, 24)); // NOI18N
+        Consumom3txt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         Consumom3txt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Consumom3txt.setText("Consumo:");
         jPanel5.add(Consumom3txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 120, 40));
@@ -235,7 +239,7 @@ public class jIResumo extends javax.swing.JInternalFrame {
         });
         jPanel5.add(Consumom3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 170, 40));
 
-        Valorm3txt.setFont(new java.awt.Font("Sitka Banner", 1, 24)); // NOI18N
+        Valorm3txt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         Valorm3txt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Valorm3txt.setText("Valor m³:");
         jPanel5.add(Valorm3txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 120, 40));
@@ -263,10 +267,21 @@ public class jIResumo extends javax.swing.JInternalFrame {
         jCheckBox1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel5.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 380, 220, 50));
 
-        Imprimirbotao.setText("Imprimir");
-        jPanel5.add(Imprimirbotao, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 160, 50));
+        consultaCliente.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        consultaCliente.setText("Consultar");
+        consultaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaClienteActionPerformed(evt);
+            }
+        });
+        consultaCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                consultaClienteKeyPressed(evt);
+            }
+        });
+        jPanel5.add(consultaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 480, 160, 50));
 
-        ValorTotaltxt.setFont(new java.awt.Font("Sitka Banner", 1, 24)); // NOI18N
+        ValorTotaltxt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         ValorTotaltxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ValorTotaltxt.setText("Valor Total:");
         jPanel5.add(ValorTotaltxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 120, 40));
@@ -285,6 +300,10 @@ public class jIResumo extends javax.swing.JInternalFrame {
             }
         });
         jPanel5.add(jFormattedTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 220, 40));
+
+        Imprimirbotao1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Imprimirbotao1.setText("Imprimir");
+        jPanel5.add(Imprimirbotao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 160, 50));
 
         getContentPane().add(jPanel5);
 
@@ -327,23 +346,30 @@ public class jIResumo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextField8ActionPerformed
 
+    private void consultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaClienteActionPerformed
+        ConsumidorControler controler = new ConsumidorControler();
+
+        String cpf = CPF.getText().replaceAll(" . ", "").replaceAll(" - ", "");
+        Consumidor novoConsumidor = controler.consultarPorCpf(cpf);
+        Nomecliente.setText(novoConsumidor.getNome());
+        Contato.setText(novoConsumidor.getContato());
+        Integer idCliente = novoConsumidor.getIdConsumidor();
+        String codigo = String.format("%d", idCliente);
+        Codigocliente1.setText(codigo);
+    }//GEN-LAST:event_consultaClienteActionPerformed
+
+    private void consultaClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_consultaClienteKeyPressed
+        // TODO add your handling code here:
+        ConsumidorControler controler = new ConsumidorControler();
+
+        String cpf = CPF.getText().replaceAll(" . ", "").replaceAll(" - ", "");
+        Consumidor novoConsumidor = controler.consultarPorCpf(cpf);
+        Nomecliente.setText(novoConsumidor.getNome());
+    }//GEN-LAST:event_consultaClienteKeyPressed
+
     private void jButtonImprimirbotao(java.awt.event.ActionEvent evt){
           DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
         UsuarioDAO Cliente = new UsuarioDAO();
-   
-        
-        /*tabela.setModel(modelo);
-    
-    List<Produto> lista = ProdutoD.listar(campo_pra_pesquisaNome.getText());//
-
-    for(Produto pro:lista) {
-        modelo.addRow(new String[] {
-            pro.getid_produto().toString(), pro.getnome_produto(), pro.getquant_produto().toString(), pro.getvalor_produto().toString() });*/
-
-
-    
-
-        
     
     }
     
@@ -359,7 +385,7 @@ public class jIResumo extends javax.swing.JInternalFrame {
     private javax.swing.JTextField Email;
     private javax.swing.JLabel Emailtxt;
     private javax.swing.JFormattedTextField Hidrometro;
-    private javax.swing.JButton Imprimirbotao;
+    private javax.swing.JButton Imprimirbotao1;
     private javax.swing.JFormattedTextField Mes;
     private javax.swing.JLabel NomeClientetxt;
     private javax.swing.JTextField Nomecliente;
@@ -368,6 +394,7 @@ public class jIResumo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel ValorTotaltxt;
     private javax.swing.JFormattedTextField Valorm3;
     private javax.swing.JLabel Valorm3txt;
+    private javax.swing.JButton consultaCliente;
     private javax.swing.JLabel hidrometrotxt;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JFormattedTextField jFormattedTextField8;

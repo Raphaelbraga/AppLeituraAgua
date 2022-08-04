@@ -21,20 +21,33 @@ public class HidrometroControler {
 
     
     public Hidrometro cadastraNovo(Hidrometro obj){
-        HidrometroDAO solicita = new HidrometroDAO();
-        Hidrometro hidrometroExist = solicita.listarPorId(obj.getIdHidrometro());
+        HidrometroDAO hidrometro = new HidrometroDAO();
+        Hidrometro hidrometroExist = hidrometro.buscaPorTag(obj.getTagHidrometro());
+        
         
         if (hidrometroExist != null) {
             setMensagem("Erro - Hidrometro ja existe!");
         } else {
-            Hidrometro novoHidrometro = solicita.cadastrar(obj); 
-//      setar leitura inicial como leitura anterior. classe leitura. Aqui ou na Leitura??
+            Hidrometro novoHidrometro = hidrometro.cadastrar(obj);
+            setMensagem("Hidrometro cadastrado com sucesso!");
             return novoHidrometro;
+        }
+            return hidrometroExist;            
+    }
+    
+    public List<Hidrometro> consultarListaPorTermo(int termo) {
+        HidrometroDAO consulta = new HidrometroDAO();
+        List<Hidrometro> hidroLista = consulta.listarPorTermo(termo);
+
+        if (hidroLista == null) {
+            setMensagem("Erro - lista de usuario não existe");
+        } else {
+            return hidroLista;
         }
         return null;
     }
     
-    public List<Hidrometro> consultarLista(Hidrometro obj) {
+    public List<Hidrometro> consultarLista() {
         HidrometroDAO consulta = new HidrometroDAO();
         List<Hidrometro> hidrometroLista = consulta.listar();
 
@@ -45,34 +58,60 @@ public class HidrometroControler {
         }
         return null;
     }
+    
+    public Hidrometro pesquisaPorId(int id) {
+        HidrometroDAO consulta = new HidrometroDAO();
+        Hidrometro hidrometroId = consulta.buscaPorId(id);
 
-
-    public Hidrometro atualizar(Hidrometro obj) {
-        HidrometroDAO atualiza = new HidrometroDAO();
-        Hidrometro idHidrometro = atualiza.listarPorId(obj.getIdHidrometro());
-        
-        if (idHidrometro != null) {
-            setMensagem("Erro - Hidrometro não existe!");
+        if (hidrometroId == null) {
+            setMensagem("Erro - Hidrometro ja existe!");
         } else {
-            Hidrometro HidrometroAtual = atualiza.atualizar(obj);
-            return HidrometroAtual;
+            return hidrometroId;
         }
-        return null;
+            return null;
+    }
+    
+    public Hidrometro pesquisaPorTag(int tag) {
+        HidrometroDAO consulta = new HidrometroDAO();
+        Hidrometro hidrometroId = consulta.buscaPorTag(tag);
+
+        if (hidrometroId == null) {
+            setMensagem("Erro - Hidrometro ja existe!");
+        } else {
+            return hidrometroId;
+        }
+            return null;
+    }
+
+
+    public Boolean atualizar(Hidrometro obj) {
+        HidrometroDAO atualiza = new HidrometroDAO();
+        Hidrometro idHidrometro = atualiza.buscaPorId(obj.getIdHidrometro());
+        
+        if (idHidrometro == null) {
+            setMensagem("Erro - Hidrometro não existe!");
+            return false;
+        } else {
+            
+            return atualiza.atualizar(obj);
+        }
     } 
     
-    public Hidrometro deletar(Hidrometro obj) {
+    public Boolean deletar(Hidrometro obj) {
        HidrometroDAO deleta = new HidrometroDAO();
-        Hidrometro idHidrometro = deleta.listarPorId(obj.getIdHidrometro());
+        Hidrometro idHidrometro = deleta.buscaPorId(obj.getIdHidrometro());
 
-        if (idHidrometro != null) {
+        if (idHidrometro == null) {
             setMensagem("Erro -Hidrometro não existe!");
         } else {
             Boolean hidrometroDeletado = deleta.deletar(obj);
             if(!hidrometroDeletado){
                 setMensagem("falha ao deletar Hidrometro, contate suporte");
             }
+            setMensagem("hidrometro deletado com sucesso");
+            return true;
         }
-        return null;
+        return false;
     }
        
     
